@@ -13,7 +13,6 @@ sessionRouter.post('', async (req, res) => {
     await Joi.validate({ email, password }, signIn);
 
     const user = await User.findOne({ $and: [{ email }, { userType }] });
-    console.log(user);
     if (user && user.comparePasswords(password)) {
       const sessionUser = sessionizeUser(user);
 

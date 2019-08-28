@@ -6,17 +6,18 @@ const email = Joi.string()
   .required()
   .error(errors => {
     return {
-      message: 'Must enter a valid email'
+      message: 'Email must contain @ symbol and valid domain.'
     };
   });
 const username = Joi.string()
-  .alphanum()
+  .regex(/^[a-zA-Z_ ]*$/)
   .min(3)
   .max(30)
   .required()
   .error(errors => {
     return {
-      message: 'Username must contain between 3-30 alpha-numeric characters'
+      message:
+        'Contact name must contain between 3-30 alpha-numeric characters.'
     };
   });
 

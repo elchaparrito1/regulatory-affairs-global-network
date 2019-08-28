@@ -25,6 +25,14 @@ userRouter.post('', async (req, res) => {
       qualifications
     } = req.body;
 
+    const user = await User.findOne({ email: email });
+
+    if (user) {
+      throw new Error(
+        'User with email already found. Please use a different email.'
+      );
+    }
+
     await Joi.validate({ username, email, password }, signUp);
 
     // If the above passes, define a new User instance and attempt to save that user.
@@ -37,7 +45,6 @@ userRouter.post('', async (req, res) => {
         company,
         phone
       });
-      console.log(newUser);
       const sessionUser = sessionizeUser(newUser);
       await newUser.save();
 
@@ -45,6 +52,25 @@ userRouter.post('', async (req, res) => {
       req.session.user = sessionUser;
       res.send(sessionUser);
     } else {
+      const consultantInfo = {
+        country,
+        address1,
+        locality,
+        postal,
+        classifications,
+        regions,
+        mediaLinks,
+        qualifications
+      };
+
+      for (var key in consultantInfo) {
+        if (consultantInfo[key] === '') {
+          throw new Error(
+            'Please fill out all required fields for Consultant signup.'
+          );
+        }
+      }
+
       const newUser = new User({
         username,
         email,
@@ -52,18 +78,8 @@ userRouter.post('', async (req, res) => {
         userType,
         company,
         phone,
-        consultantInfo: {
-          country,
-          address1,
-          locality,
-          postal,
-          classifications,
-          regions,
-          mediaLinks,
-          qualifications
-        }
+        consultantInfo
       });
-      console.log(newUser);
       const sessionUser = sessionizeUser(newUser);
       await newUser.save();
 

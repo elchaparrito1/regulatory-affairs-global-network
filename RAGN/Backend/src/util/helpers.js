@@ -4,5 +4,12 @@ export const parseError = err => {
 };
 
 export const sessionizeUser = user => {
-  return { userId: user.id, username: user.username };
+  return {
+    userId: user.id,
+    username: user.username,
+    useremail: user.email,
+    usercompany: user.company,
+    userphone: user.phone,
+    userObj: user.consultantInfo
+  };
 };

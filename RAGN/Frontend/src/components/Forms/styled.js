@@ -1,6 +1,10 @@
 import styled from 'styled-components';
+import Select from 'react-select';
 
 export const Row = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
   &::after {
     content: '';
     clear: both;
@@ -36,58 +40,37 @@ export const Box = styled.div`
   margin: 0 auto;
   background-color: #edeae7;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  height: 450px;
+  height: 70px;
   width: 400px;
   padding: 0 30px 0 30px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`;
 
-  .input-style {
-    font-size: 15px;
-    padding: 8px 15px;
-    background-color: #939393;
-    outline: none;
-    color: #edeae7;
-    float: left;
+export const Label = styled.label`
+  margin-right: 10px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`;
 
-    :hover {
-      cursor: pointer;
-      background-color: #312b7f;
-      color: white;
-      outline: none;
-    }
+export const FormLabel = styled(Label)`
+  align-items: left;
+  display: flex;
+  justify-content: left;
 
-    :active {
-      outline: none;
-      border: 0;
-    }
+  :focus {
+    color: #312b7f;
   }
-`;
-
-export const Text = styled.p`
-  font-size: 2em;
-  text-align: center;
-`;
-
-export const TextMessage = styled.p`
-  font-size: 0.8em;
-  text-align: right;
-  color: red;
-  margin-top: -15px;
-  margin-right: ${props => (props.password ? '40px' : '5px')};
-`;
-
-export const LoginMessage = styled(TextMessage)`
-  color: #e68a00;
-  text-align: left;
-  font-size: 1em;
 `;
 
 export const Input = styled.input`
   margin: 0 auto;
   font-size: 1em;
   height: 30px;
-  width: 99%;
+  width: 75%;
   margin-bottom: 15px;
-
   background: transparent;
   border: none;
   border-bottom: 1px solid #000000;
@@ -106,16 +89,13 @@ export const Input = styled.input`
   }
 `;
 
-export const Label = styled.label`
-  text-align: center;
-`;
-
 export const Button = styled.button`
   font-size: 15px;
   padding: 8px 15px;
   background-color: #939393;
   outline: none;
   color: #edeae7;
+  margin-left: 10px;
 
   :hover {
     cursor: pointer;
@@ -130,33 +110,18 @@ export const Button = styled.button`
   }
 `;
 
-export const TextSelection = styled.p`
-  font-size: 0.9em;
-  display: block;
-  margin-left: 5px;
+export const Selector = styled(Select)`
+  width: 50%;
 
-  :hover {
-    color: #312b7f;
-    opacity: 1;
-    cursor: pointer;
-  }
-
-  :hover::after {
-    width: 100%;
-    outline: none;
-  }
-`;
-
-export const Icon = styled.img`
-  width: 30px;
-  height: 30px;
-
-  :hover {
+  input:active {
+    color: white;
     cursor: pointer;
   }
 `;
 
-export const P = styled.p`
-  font-size: 20px;
-  color: ${props => (props.error ? 'red' : 'black')};
+export const TextMessage = styled.p`
+  font-size: 0.8em;
+  text-align: right;
+  margin-top: -25px;
+  margin-right: 15px;
 `;

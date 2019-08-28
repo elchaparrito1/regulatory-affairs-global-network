@@ -9,8 +9,11 @@ import {
   Label,
   Box,
   TextMessage,
-  LoginMessage
+  LoginMessage,
+  Icon
 } from './styled';
+import ShowImg from '../../images/show.png';
+import HideImg from '../../images/hide.png';
 import './Login.css';
 
 const mapStateToProps = ({ errors }) => ({
@@ -31,7 +34,8 @@ class Login extends React.Component {
     typeColor: '',
     emailColor: '',
     passwordColor: '',
-    errorMessage: this.props.errors
+    errorMessage: this.props.errors,
+    showPassword: false
   };
 
   //Method to update errorMessage state, when redux errors message object updates.
@@ -45,7 +49,7 @@ class Login extends React.Component {
     }
   }
 
-  //Method for handling login and firing off action
+  // Method for handling login and firing off action
   handleSubmit = e => {
     e.preventDefault();
     const user = {
@@ -105,8 +109,22 @@ class Login extends React.Component {
     }
   };
 
+  // Method for toggling show/hide password
+  handleToggle = e => {
+    e.preventDefault();
+    if (this.state.showPassword) {
+      this.setState({
+        showPassword: false
+      });
+    } else {
+      this.setState({
+        showPassword: true
+      });
+    }
+  };
+
   render() {
-    console.log(this.state.errors);
+    // console.log(this.state.errors);
     return (
       <>
         <Row>
@@ -200,8 +218,41 @@ class Login extends React.Component {
                     <Label>Password *</Label>
                   </Column>
                 </Row>
+                {this.state.showPassword ? (
+                  <Row>
+                  <Column lg="11" md="11" sm="11" xs="11">
+                    <Input
+                      style={{ borderColor: this.state.passwordColor }}
+                      id="password"
+                      type="text"
+                      placeholder="Your password..."
+                      value={this.state.password}
+                      autoComplete="off"
+                      onChange={this.handleInputChange('password')}
+                      onBlur={this.checkPassword}
+                    />
+                  </Column>
+                  <Column lg="1" md="1" sm="1" xs="1">
+                    <span>
+                      <Icon
+                        onClick={this.handleToggle}
+                        src={ShowImg}
+                        alt="password icon"
+                      />
+                    </span>
+                  </Column>
+                </Row>
+                {this.state.passwordError === 'blank' && (
+                  <Row>
+                    <Column lg="12" md="12" sm="12" xs="12">
+                      <TextMessage password>Password required</TextMessage>
+                    </Column>
+                  </Row>
+                )}
                 <Row>
-                  <Column lg="12" md="12" sm="12" xs="12">
+                  ) : (
+                <Row>
+                  <Column lg="11" md="11" sm="11" xs="11">
                     <Input
                       style={{ borderColor: this.state.passwordColor }}
                       id="password"
@@ -213,15 +264,25 @@ class Login extends React.Component {
                       onBlur={this.checkPassword}
                     />
                   </Column>
+                  <Column lg="1" md="1" sm="1" xs="1">
+                    <span>
+                      <Icon
+                        onClick={this.handleToggle}
+                        src={HideImg}
+                        alt="password icon"
+                      />
+                    </span>
+                  </Column>
                 </Row>
                 {this.state.passwordError === 'blank' && (
                   <Row>
                     <Column lg="12" md="12" sm="12" xs="12">
-                      <TextMessage>Password required</TextMessage>
+                      <TextMessage password>Password required</TextMessage>
                     </Column>
                   </Row>
                 )}
-                <Row>
+                  <Row>)
+                    }
                   <Column lg="12" md="12" sm="12" xs="12">
                     <input
                       className="input-style"
