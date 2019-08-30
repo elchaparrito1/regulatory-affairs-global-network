@@ -218,13 +218,12 @@ class Login extends React.Component {
                     <Label>Password *</Label>
                   </Column>
                 </Row>
-                {this.state.showPassword ? (
-                  <Row>
+                <Row>
                   <Column lg="11" md="11" sm="11" xs="11">
                     <Input
                       style={{ borderColor: this.state.passwordColor }}
                       id="password"
-                      type="text"
+                      type={this.state.showPassword ? 'text' : 'password'}
                       placeholder="Your password..."
                       value={this.state.password}
                       autoComplete="off"
@@ -236,7 +235,7 @@ class Login extends React.Component {
                     <span>
                       <Icon
                         onClick={this.handleToggle}
-                        src={ShowImg}
+                        src={this.state.showPassword ? ShowImg : HideImg}
                         alt="password icon"
                       />
                     </span>
@@ -250,39 +249,6 @@ class Login extends React.Component {
                   </Row>
                 )}
                 <Row>
-                  ) : (
-                <Row>
-                  <Column lg="11" md="11" sm="11" xs="11">
-                    <Input
-                      style={{ borderColor: this.state.passwordColor }}
-                      id="password"
-                      type="password"
-                      placeholder="Your password..."
-                      value={this.state.password}
-                      autoComplete="off"
-                      onChange={this.handleInputChange('password')}
-                      onBlur={this.checkPassword}
-                    />
-                  </Column>
-                  <Column lg="1" md="1" sm="1" xs="1">
-                    <span>
-                      <Icon
-                        onClick={this.handleToggle}
-                        src={HideImg}
-                        alt="password icon"
-                      />
-                    </span>
-                  </Column>
-                </Row>
-                {this.state.passwordError === 'blank' && (
-                  <Row>
-                    <Column lg="12" md="12" sm="12" xs="12">
-                      <TextMessage password>Password required</TextMessage>
-                    </Column>
-                  </Row>
-                )}
-                  <Row>)
-                    }
                   <Column lg="12" md="12" sm="12" xs="12">
                     <input
                       className="input-style"

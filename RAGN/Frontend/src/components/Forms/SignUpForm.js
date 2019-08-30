@@ -1,6 +1,8 @@
 import React from 'react';
-import { Row, Column, FormLabel, Input } from './styled';
+import { Row, Column, FormLabel, Input, Icon, TextMessage } from './styled';
 import Select from 'react-styled-select';
+import ShowImg from '../../images/show.png';
+import HideImg from '../../images/hide.png';
 
 const classificationOptions = [
   { value: 'food', label: 'Food' },
@@ -25,7 +27,8 @@ export const SignUpForm = props => {
     qualifications,
     classifications,
     regions,
-    countryOptions
+    countryOptions,
+    showPassword
   } = props;
   return (
     <div style={{ border: props.typeColor }}>
@@ -91,7 +94,7 @@ export const SignUpForm = props => {
                   id="company"
                   type="text"
                   placeholder="Your company..."
-                  value={company}
+                  value={props.generateCapitals(company)}
                   autoComplete="off"
                   onChange={props.handleInputChange('company')}
                 />
@@ -135,20 +138,29 @@ export const SignUpForm = props => {
               </Column>
               <Column
                 style={{ marginBottom: '15px' }}
-                lg="6"
-                md="6"
-                sm="6"
-                xs="6"
+                lg="5"
+                md="5"
+                sm="5"
+                xs="5"
               >
                 <FormLabel>Password *</FormLabel>
                 <Input
                   id="password"
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   placeholder="Your password..."
                   value={password}
                   autoComplete="off"
                   onChange={props.handleInputChange('password')}
                 />
+              </Column>
+              <Column lg="1" md="1" sm="1" xs="1">
+                <span>
+                  <Icon
+                    onClick={props.handleToggle}
+                    src={showPassword ? ShowImg : HideImg}
+                    alt="password icon"
+                  />
+                </span>
               </Column>
             </Row>
             <Row>
@@ -194,7 +206,7 @@ export const SignUpForm = props => {
                   id="companyCompany"
                   type="text"
                   placeholder="Your company..."
-                  value={company}
+                  value={props.generateCapitals(company)}
                   autoComplete="off"
                   onChange={props.handleInputChange('company')}
                 />
@@ -264,20 +276,34 @@ export const SignUpForm = props => {
               </Column>
               <Column
                 style={{ marginBottom: '15px' }}
-                lg="6"
-                md="6"
-                sm="6"
-                xs="6"
+                lg="5"
+                md="5"
+                sm="5"
+                xs="5"
               >
                 <FormLabel>Password *</FormLabel>
                 <Input
-                  id="passwordCompany"
-                  type="password"
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
                   placeholder="Your password..."
                   value={password}
                   autoComplete="off"
                   onChange={props.handleInputChange('password')}
                 />
+              </Column>
+              <Column lg="1" md="1" sm="1" xs="1">
+                <span>
+                  <Icon
+                    onClick={props.handleToggle}
+                    src={showPassword ? ShowImg : HideImg}
+                    alt="password icon"
+                  />
+                </span>
+              </Column>
+            </Row>
+            <Row>
+              <Column lg="12" md="12" sm="12" xs="12">
+                <TextMessage password>Password required</TextMessage>
               </Column>
             </Row>
             <Row>

@@ -123,5 +123,15 @@ export const TextMessage = styled.p`
   font-size: 0.8em;
   text-align: right;
   margin-top: -25px;
-  margin-right: 15px;
+  margin-right: 195px;
+`;
+
+export const Icon = styled.img`
+  width: 30px;
+  height: 30px;
+  margin-left: -90px;
+
+  :hover {
+    cursor: pointer;
+  }
 `;

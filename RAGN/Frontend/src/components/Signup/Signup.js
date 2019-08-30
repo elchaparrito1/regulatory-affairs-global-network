@@ -27,7 +27,7 @@ class Signup extends React.Component {
     contact: '',
     email: '',
     password: '',
-    phone: '',
+    phone: '+',
     regions: [],
     location: '',
     address1: '',
@@ -38,7 +38,8 @@ class Signup extends React.Component {
     qualifications: [],
     emailCheck: '',
     classifications: [],
-    countryOptions: []
+    countryOptions: [],
+    showPassword: false
   };
 
   // Method for CRUD operation to sign up customer/consultant
@@ -158,6 +159,20 @@ class Signup extends React.Component {
     return result.join(' ');
   };
 
+  // Method for toggling show/hide password
+  handleToggle = e => {
+    e.preventDefault();
+    if (this.state.showPassword) {
+      this.setState({
+        showPassword: false
+      });
+    } else {
+      this.setState({
+        showPassword: true
+      });
+    }
+  };
+
   // Method to render the body of the modal
   renderBody = () => {
     return (
@@ -176,6 +191,7 @@ class Signup extends React.Component {
         country={this.state.country}
         postal={this.state.postal}
         media={this.state.media}
+        showPassword={this.state.showPassword}
         qualifications={this.state.qualifications}
         emailCheck={this.state.emailCheck}
         classifications={this.state.classifications}
@@ -187,6 +203,7 @@ class Signup extends React.Component {
         handleInputChange={this.handleInputChange}
         handleClassChange={this.handleClassChange}
         handleCountryChange={this.handleCountryChange}
+        handleToggle={this.handleToggle}
         handleSubmit={this.handleSubmit}
       />
     );

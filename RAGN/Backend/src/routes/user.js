@@ -33,7 +33,7 @@ userRouter.post('', async (req, res) => {
       );
     }
 
-    await Joi.validate({ username, email, password }, signUp);
+    await Joi.validate({ username, email, password, phone, company }, signUp);
 
     // If the above passes, define a new User instance and attempt to save that user.
     if (userType === 'customer') {

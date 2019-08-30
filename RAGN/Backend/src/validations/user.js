@@ -1,6 +1,16 @@
 import Joi from 'joi';
 
-// Define an email, username, and password each with validations tacked on.
+// Define an company, email, username, password, and phone number each with validations tacked on.
+const company = Joi.string()
+  .min(1)
+  .required()
+  .error(errors => {
+    return {
+      message:
+        'Must include company name. If for personal use, enter "private" into field.'
+    };
+  });
+
 const email = Joi.string()
   .email()
   .required()
@@ -9,6 +19,7 @@ const email = Joi.string()
       message: 'Email must contain @ symbol and valid domain.'
     };
   });
+
 const username = Joi.string()
   .regex(/^[a-zA-Z_ ]*$/)
   .min(3)
@@ -38,11 +49,26 @@ const password = Joi.string()
     };
   });
 
+
+// And phone number
+const phone = Joi.string()
+  .min(12)
+  .max(20)
+  .required()
+  .error(errors => {
+    return {
+      message:
+        'Phone number must contain between 12-15 digits, including country and area codes.'
+    };
+  });
+
 // Use email, username, and password to create and export two Joi objects.
 export const signUp = Joi.object().keys({
   email,
   username,
-  password
+  password,
+  company,
+  phone
 });
 
 export const signIn = Joi.object().keys({
