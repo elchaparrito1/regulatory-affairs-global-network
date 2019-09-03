@@ -27,7 +27,7 @@ class Signup extends React.Component {
     contact: '',
     email: '',
     password: '',
-    phone: '+',
+    phone: '',
     regions: [],
     location: '',
     address1: '',
@@ -173,6 +173,12 @@ class Signup extends React.Component {
     }
   };
 
+  myCallback = dataFromChild => {
+    this.setState({
+      phone: dataFromChild
+    });
+  };
+
   // Method to render the body of the modal
   renderBody = () => {
     return (
@@ -205,6 +211,7 @@ class Signup extends React.Component {
         handleCountryChange={this.handleCountryChange}
         handleToggle={this.handleToggle}
         handleSubmit={this.handleSubmit}
+        callbackFromParent={this.myCallback}
       />
     );
   };
@@ -215,8 +222,7 @@ class Signup extends React.Component {
   };
 
   render() {
-    // const { errors } = this.props;
-    // console.log(errors);
+    console.log(this.state.phone);
     return (
       <>
         <BlankModal

@@ -121,7 +121,7 @@ export const Selector = styled(Select)`
 
 export const TextMessage = styled.p`
   font-size: 0.8em;
-  text-align: right;
+  text-align: left;
   margin-top: -25px;
   margin-right: 195px;
 `;

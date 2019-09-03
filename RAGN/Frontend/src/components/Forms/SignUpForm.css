@@ -1,0 +1,95 @@
+.phone {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.react-phone-number-input__country--native {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  margin-right: 0.5em;
+}
+
+.react-phone-number-input__country-select {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  border: 0;
+  border-radius: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.react-phone-number-input__country-select:focus
+  + .react-phone-number-input__country-select-arrow {
+  color: #312b7f;
+}
+
+.react-phone-number-input__phone {
+  flex: 1 1;
+  min-width: 0;
+}
+
+.react-phone-number-input__row {
+  display: flex;
+  align-items: left;
+  width: 37.5%;
+  margin-bottom: 15px;
+}
+
+.react-phone-number-input__icon--international {
+  width: calc(0.93em + 2px);
+  height: calc(0.93em + 2px);
+  padding-left: 0.155em;
+  padding-right: 0.155em;
+  border: none;
+}
+
+.react-phone-number-input__icon {
+  width: 1.24em;
+  height: 0.93em;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-sizing: content-box;
+}
+
+.react-phone-number-input__input {
+  height: calc(0.3rem * 6);
+  outline: none;
+  border-radius: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  -webkit-transition: border 0.1s;
+  transition: border 0.1s;
+  font-size: inherit;
+  margin: 0 auto;
+  background: transparent;
+  border-bottom: 1px solid #000000;
+}
+
+.react-phone-number-input__input::placeholder {
+  padding: 5px;
+}
+
+.react-phone-number-input__input:focus {
+  color: #312b7f;
+  outline: none;
+  border-bottom: 1px solid #312b7f;
+}
+
+.react-phone-number-input__input:focus::placeholder {
+  color: #312b7f;
+  outline: none;
+  border-bottom: 1px solid #312b7f;
+}

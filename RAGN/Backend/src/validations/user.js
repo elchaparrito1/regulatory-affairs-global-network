@@ -49,16 +49,15 @@ const password = Joi.string()
     };
   });
 
-
 // And phone number
 const phone = Joi.string()
   .min(12)
-  .max(20)
+  .max(15)
   .required()
   .error(errors => {
     return {
       message:
-        'Phone number must contain between 12-15 digits, including country and area codes.'
+        'Phone number must contain between 12-15 digits. "+" symbol and country code will save automatically with entry.'
     };
   });
 

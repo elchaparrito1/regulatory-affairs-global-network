@@ -8,6 +8,7 @@ class Dashboard extends React.Component {
     return (
       <>
         <h1>Hi {session.username}</h1>
+        <h3>Phone: {session.userphone}</h3>
         <h1>Classifications: {session.userObj.classifications}</h1>
         <h2>Regions: {session.userObj.regions}</h2>
         <p>You are now logged in!</p>
