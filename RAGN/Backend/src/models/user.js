@@ -36,16 +36,7 @@ const UserSchema = new mongoose.Schema(
       required: false
     },
     consultantInfo: {
-      country: {
-        type: String
-      },
-      address1: {
-        type: String
-      },
-      locality: {
-        type: String
-      },
-      postal: {
+      address: {
         type: String
       },
       classifications: {
@@ -54,7 +45,7 @@ const UserSchema = new mongoose.Schema(
       regions: {
         type: Array
       },
-      mediaLinks: String,
+      mediaLinks: Array,
       qualifications: String
     }
   },

@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from '../../components/Navigation/Navigation';
 import Login from '../../components/Login/Login';
 import Signup from '../../components/Signup/Signup';
+import MyFormContext from '../../components/MyFormContext/MyFormContext';
 
 class AuthPage extends React.Component {
   render() {
@@ -11,7 +12,9 @@ class AuthPage extends React.Component {
           <Navigation />
           <Login />
           <br />
-          <Signup />
+          <MyFormContext>
+            <Signup />
+          </MyFormContext>
           <br />
         </div>
       </>

@@ -89,6 +89,26 @@ export const Input = styled.input`
   }
 `;
 
+export const TextInput = styled.textarea`
+  margin: 0 auto;
+  font-size: 0.8em;
+  height: 60px;
+  border: 1px solid #000000;
+
+  ::placeholder {
+    padding: 5px;
+  }
+
+  :focus {
+    ::placeholder {
+      color: #312b7f;
+    }
+    color: #312b7f;
+    outline: none;
+    border-bottom: 1px solid #312b7f;
+  }
+`;
+
 export const Button = styled.button`
   font-size: 15px;
   padding: 8px 15px;
@@ -122,7 +142,7 @@ export const Selector = styled(Select)`
 export const TextMessage = styled.p`
   font-size: 0.8em;
   text-align: left;
-  margin-top: -25px;
+  margin-top: ${props => (props.box ? '-10px' : '-13px')};
   margin-right: 195px;
 `;
 

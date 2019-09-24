@@ -96,6 +96,7 @@ export const Button = styled.button`
   outline: none;
   color: #edeae7;
   margin-left: 10px;
+  border: 0;
 
   :hover {
     cursor: pointer;

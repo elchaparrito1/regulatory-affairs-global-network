@@ -49,3 +49,25 @@ html {
 .form-radio:checked {
   background-color: #312b7f;
 }
+
+.input-style {
+  font-size: 15px;
+  padding: 8px 15px;
+  background-color: #939393;
+  outline: none;
+  color: #edeae7;
+  border: 0;
+  border-color: #939393;
+}
+
+.input-style:hover {
+  cursor: pointer;
+  background-color: #312b7f;
+  color: white;
+  outline: none;
+}
+
+.input-style:active {
+  outline: none;
+  border: 0;
+}

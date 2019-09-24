@@ -58,7 +58,7 @@ export const ModalContent = styled.div`
 
 export const ModalHeader = styled.div`
   background: #edeae7;
-  padding: 15px;
+  padding: 10px 40px;
   color: black;
   margin: 0 auto;
 `;

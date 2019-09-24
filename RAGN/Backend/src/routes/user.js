@@ -15,10 +15,7 @@ userRouter.post('', async (req, res) => {
       userType,
       company,
       phone,
-      country,
-      address1,
-      locality,
-      postal,
+      address,
       classifications,
       regions,
       mediaLinks,
@@ -29,7 +26,7 @@ userRouter.post('', async (req, res) => {
 
     if (user) {
       throw new Error(
-        'User with email already found. Please use a different email.'
+        'Email address is already registered on another account. Please use a different email.'
       );
     }
 
@@ -53,14 +50,9 @@ userRouter.post('', async (req, res) => {
       res.send(sessionUser);
     } else {
       const consultantInfo = {
-        country,
-        address1,
-        locality,
-        postal,
+        address,
         classifications,
-        regions,
-        mediaLinks,
-        qualifications
+        regions
       };
 
       for (var key in consultantInfo) {
@@ -78,8 +70,11 @@ userRouter.post('', async (req, res) => {
         userType,
         company,
         phone,
-        consultantInfo
+        consultantInfo,
+        mediaLinks,
+        qualifications
       });
+
       const sessionUser = sessionizeUser(newUser);
       await newUser.save();
 
