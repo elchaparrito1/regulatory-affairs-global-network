@@ -93,7 +93,7 @@ export const TextInput = styled.textarea`
   margin: 0 auto;
   font-size: 0.8em;
   height: 60px;
-  border: 1px solid #000000;
+  border: 1px solid #cacaca;
 
   ::placeholder {
     padding: 5px;
@@ -105,7 +105,7 @@ export const TextInput = styled.textarea`
     }
     color: #312b7f;
     outline: none;
-    border-bottom: 1px solid #312b7f;
+    border: 1px solid #312b7f;
   }
 `;
 

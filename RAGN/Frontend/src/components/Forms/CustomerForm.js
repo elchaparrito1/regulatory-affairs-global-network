@@ -100,7 +100,7 @@ class CustomerForm extends React.Component {
               </Column>
             </Row>
             <Row>
-              <Column lg="12" md="12" sm="12" xs="12">
+              <Column lg="6" md="6" sm="6" xs="6">
                 <FormLabel>Phone *</FormLabel>
                 <PhoneInput
                   defaultCountry={'us'}

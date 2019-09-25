@@ -2,13 +2,12 @@ import React from 'react';
 import SignUpContext from '../../contexts/SignupContext';
 import ShowImg from '../../images/show.png';
 import HideImg from '../../images/hide.png';
+import MediaIcons from '../../components/Media/MediaIcons';
 
 //Import of various APIs
 import Select from 'react-styled-select';
-import { PocketIcon } from 'react-share';
-import { SocialIcon } from 'react-social-icons';
-import 'react-phone-number-input/style.css';
-import PhoneInput from 'react-phone-number-input';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/dist/style.css';
 
 import {
   Row,
@@ -36,14 +35,8 @@ class ConsultantForm extends React.Component {
       <SignUpContext.Consumer>
         {context => (
           <>
-            <Row>
-              <Column
-                style={{ marginBottom: '15px' }}
-                lg="6"
-                md="6"
-                sm="6"
-                xs="6"
-              >
+            <Row style={{ marginBottom: '15px' }}>
+              <Column lg="6" md="6" sm="6" xs="6">
                 <FormLabel>Company *</FormLabel>
                 <Input
                   id="companyCompany"
@@ -54,13 +47,7 @@ class ConsultantForm extends React.Component {
                   onChange={context.handleInputChange('company')}
                 />
               </Column>
-              <Column
-                style={{ marginBottom: '15px' }}
-                lg="6"
-                md="6"
-                sm="6"
-                xs="6"
-              >
+              <Column lg="6" md="6" sm="6" xs="6">
                 <FormLabel>Contact Person *</FormLabel>
                 <Input
                   id="contactCompany"
@@ -73,38 +60,30 @@ class ConsultantForm extends React.Component {
                 />
               </Column>
             </Row>
-            <Row>
-              <Column lg="12" md="12" sm="12" xs="12">
+            <Row style={{ marginBottom: '15px' }}>
+              <Column lg="6" md="6" sm="6" xs="6">
                 <FormLabel>Phone *</FormLabel>
                 <PhoneInput
-                  id="phone"
-                  placeholder="Your local phone number..."
+                  defaultCountry={'us'}
                   value={context.phone}
-                  onChange={context.handleInputChange('phone')}
+                  onChange={context.handleOnChange}
+                />
+              </Column>
+              <Column lg="6" md="6" sm="6" xs="6">
+                <FormLabel>Business Address *</FormLabel>
+                <TextInput
+                  rows="12"
+                  cols="50"
+                  id="address"
+                  placeholder="Your business address with proper indentation..."
+                  value={context.address}
+                  autoComplete="off"
+                  onChange={context.handleInputChange('address')}
                 />
               </Column>
             </Row>
-            <Row>
-              <Column
-                style={{ marginBottom: '15px' }}
-                lg="12"
-                md="12"
-                sm="12"
-                xs="12"
-              >
-                <TextMessage phone>
-                  "+" symbol and country code will save automatically
-                </TextMessage>
-              </Column>
-            </Row>
-            <Row>
-              <Column
-                style={{ marginBottom: '15px' }}
-                lg="6"
-                md="6"
-                sm="6"
-                xs="6"
-              >
+            <Row style={{ marginBottom: '15px' }}>
+              <Column lg="6" md="6" sm="6" xs="6">
                 <FormLabel>Email *</FormLabel>
                 <Input
                   id="emailCompany"
@@ -115,13 +94,7 @@ class ConsultantForm extends React.Component {
                   onChange={context.handleInputChange('email')}
                 />
               </Column>
-              <Column
-                style={{ marginBottom: '15px' }}
-                lg="5"
-                md="5"
-                sm="5"
-                xs="5"
-              >
+              <Column lg="5" md="5" sm="5" xs="5">
                 <FormLabel>Password *</FormLabel>
                 <Input
                   id="password"
@@ -140,20 +113,6 @@ class ConsultantForm extends React.Component {
                     alt="password icon"
                   />
                 </span>
-              </Column>
-            </Row>
-            <Row style={{ marginBottom: '15px' }}>
-              <Column lg="12" md="12" sm="12" xs="12">
-                <FormLabel>Business Address *</FormLabel>
-                <TextInput
-                  rows="12"
-                  cols="50"
-                  id="address"
-                  placeholder="Your business address with proper indentation..."
-                  value={context.address}
-                  autoComplete="off"
-                  onChange={context.handleInputChange('address')}
-                />
               </Column>
             </Row>
             <Row style={{ marginBottom: '15px' }}>
@@ -187,11 +146,11 @@ class ConsultantForm extends React.Component {
             <Row style={{ marginBottom: '15px' }}>
               <Column lg="6" md="6" sm="6" xs="6">
                 <TextMessage box>
-                  Select classification of expertise
+                  {`Select classification(s) of expertise`}
                 </TextMessage>
               </Column>
               <Column lg="6" md="6" sm="6" xs="6">
-                <TextMessage box>Select regions of expertise</TextMessage>
+                <TextMessage box>{`Select region(s) of expertise`}</TextMessage>
               </Column>
             </Row>
             <Row>
@@ -202,13 +161,8 @@ class ConsultantForm extends React.Component {
                 sm="6"
                 xs="6"
               >
-                <PocketIcon
-                  url="https://www.facebook.com/workplace"
-                  size={32}
-                  round={true}
-                />
-
-                <SocialIcon url="https://www.facebook.com/workplace" />
+                <FormLabel>Media Links</FormLabel>
+                <MediaIcons />
               </Column>
               <Column
                 style={{ marginBottom: '15px' }}

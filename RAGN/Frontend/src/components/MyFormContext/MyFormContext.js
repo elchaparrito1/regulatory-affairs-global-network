@@ -158,9 +158,9 @@ class MyFormContext extends React.Component {
     }
   };
 
-  handleOnChange(value) {
+  handleOnChange = value => {
     this.setState({ phone: value });
-  }
+  };
 
   render() {
     console.log(this.state.phone);
