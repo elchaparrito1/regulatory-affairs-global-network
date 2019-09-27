@@ -106,7 +106,7 @@ class MyFormContext extends React.Component {
         phone: '',
         regions: [],
         address: '',
-        media: '',
+        media: [],
         qualifications: [],
         emailCheck: '',
         classifications: [],
@@ -128,6 +128,9 @@ class MyFormContext extends React.Component {
 
   // Method for updating regions array
   handleCountryChange = regions => this.setState({ regions });
+
+  // Method for updating media array
+  handleMediaChange = media => this.setState({ media });
 
   // Method to automatically capitalize first syllables of each name
   generateCapitals = str => {
@@ -194,6 +197,7 @@ class MyFormContext extends React.Component {
           handleClassChange: this.handleClassChange,
           handleCountryChange: this.handleCountryChange,
           handleInputChange: this.handleInputChange,
+          handleMediaChange: this.handleMediaChange,
           handleToggle: this.handleToggle,
           handleOnChange: this.handleOnChange
         }}
