@@ -30,19 +30,17 @@ export const Column = styled.div`
   @media only screen and (min-width: 1200px) {
     ${({ lg }) => lg && getWidthString(lg)};
   }
-
-  margin-right: ${props => (props.icon ? '-35px' : '0')};
 `;
 
 export const Input = styled.input`
-  margin: 0 auto;
-  font-size: 1em;
+  /* margin: 0 auto; */
+  font-size: 0.7em;
   height: 30px;
-  width: 75%;
-  margin-bottom: 15px;
-  background: transparent;
+  width: 85%;
+  background: white;
+  float: right;
   border: none;
-  border-bottom: 1px solid #000000;
+  border: 1px solid hsl(0, 0%, 80%);
 
   ::placeholder {
     padding: 5px;
@@ -54,6 +52,30 @@ export const Input = styled.input`
     }
     color: #312b7f;
     outline: none;
-    border-bottom: 1px solid #312b7f;
+    border: 1px solid #312b7f;
+  }
+`;
+
+export const Box = styled.div`
+  background-color: #edeae7;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  width: 65%;
+  transition: transform 0.2s;
+
+  :hover {
+    transform: scale(1.1);
+  }
+`;
+
+export const Close = styled.span`
+  color: #ccc;
+  font-size: 30px;
+  color: black;
+  cursor: pointer;
+  margin-left: 5px;
+
+  :hover,
+  focus {
+    color: #312b7f;
   }
 `;

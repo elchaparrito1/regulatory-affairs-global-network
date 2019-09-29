@@ -130,7 +130,8 @@ class MyFormContext extends React.Component {
   handleCountryChange = regions => this.setState({ regions });
 
   // Method for updating media array
-  handleMediaChange = media => this.setState({ media });
+  handleMediaChange = media =>
+    this.setState({ media: [...this.state.media, media] });
 
   // Method to automatically capitalize first syllables of each name
   generateCapitals = str => {
@@ -166,7 +167,7 @@ class MyFormContext extends React.Component {
   };
 
   render() {
-    console.log(this.state.phone);
+    console.log(this.state.media);
     return (
       <SignupContext.Provider
         value={{

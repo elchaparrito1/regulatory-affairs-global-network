@@ -94,6 +94,7 @@ export const TextInput = styled.textarea`
   font-size: 0.8em;
   height: 60px;
   border: 1px solid #cacaca;
+  background: hsl(0, 0%, 100%);
 
   ::placeholder {
     padding: 5px;

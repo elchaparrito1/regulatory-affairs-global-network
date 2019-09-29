@@ -85,7 +85,7 @@ export const Close = styled.span`
 
   :hover,
   focus {
-    color: #003366;
+    color: #312b7f;
   }
 `;
 

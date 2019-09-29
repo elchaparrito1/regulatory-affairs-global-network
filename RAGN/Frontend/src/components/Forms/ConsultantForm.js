@@ -5,7 +5,7 @@ import HideImg from '../../images/hide.png';
 import MediaIcons from '../../components/Media/MediaIcons';
 
 //Import of various APIs
-import Select from 'react-styled-select';
+import Select from 'react-select';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/dist/style.css';
 
@@ -123,10 +123,9 @@ class ConsultantForm extends React.Component {
                   value={context.classifications}
                   onChange={context.handleClassChange}
                   options={classificationOptions}
-                  multi
+                  isMulti
                   searchable
                   style={{ width: '75%' }}
-                  className="dark-theme"
                 />
               </Column>
               <Column lg="6" md="6" sm="6" xs="6">
@@ -136,10 +135,9 @@ class ConsultantForm extends React.Component {
                   value={context.regions}
                   onChange={context.handleCountryChange}
                   options={context.countryOptions}
-                  multi
+                  isMulti
                   searchable
                   style={{ width: '75%' }}
-                  className="dark-theme"
                 />
               </Column>
             </Row>

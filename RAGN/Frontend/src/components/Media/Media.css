@@ -1,3 +1,38 @@
 ul {
   list-style-type: none;
+  padding-inline-start: 0px;
+}
+
+li {
+  margin-left: 0px;
+  margin-bottom: 5px;
+}
+
+.css-yk16xz-control {
+  border-color: hsl(0, 0%, 80%);
+  border-radius: 0px !important;
+  width: 75%;
+}
+
+.css-1pahdxg-control {
+  width: 75% !important;
+  border-radius: 0px !important;
+  border-color: #312b7f !important;
+  box-shadow: none !important;
+  border: 1px solid #312b7f !important;
+}
+
+.css-26l3qy-menu {
+  width: 75% !important;
+  border-radius: 0px !important;
+  border: 1px solid hsl(0, 0%, 80%) !important;
+}
+
+.css-1n7v3ny-option {
+  background-color: #312b7f !important;
+  color: white !important;
+}
+
+.css-9gakcf-option {
+  background-color: hsl(0, 0%, 80%) !important;
 }

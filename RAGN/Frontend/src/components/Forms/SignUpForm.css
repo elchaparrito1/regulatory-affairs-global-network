@@ -8,7 +8,7 @@
   margin-bottom: 0 !important;
   padding-left: 48px;
   margin-left: 0;
-  background: #ffffff;
+  background: hsl(0, 0%, 100%) !important;
   border: 1px solid #cacaca;
   border-radius: 0px;
   line-height: 25px;
@@ -37,8 +37,4 @@
   font-size: 15px;
   position: relative;
   width: 100%;
-}
-
-.dark-theme {
-  background: #ffffff;
 }
