@@ -3,6 +3,25 @@ import { connect } from 'react-redux';
 import { clear } from '../../actions/error';
 import { signup } from '../../actions/session';
 import SignupContext from '../../contexts/SignupContext';
+import {
+  FacebookIcon,
+  TwitterIcon,
+  TelegramIcon,
+  WhatsappIcon,
+  LinkedinIcon,
+  VKIcon,
+  OKIcon,
+  RedditIcon,
+  TumblrIcon,
+  LivejournalIcon,
+  MailruIcon,
+  ViberIcon,
+  WorkplaceIcon,
+  LineIcon,
+  PocketIcon,
+  EmailIcon
+} from 'react-share';
+// import { SocialIcon } from 'react-social-icons';
 
 import axios from 'axios';
 
@@ -14,6 +33,25 @@ const mapDispatchToProps = dispatch => ({
   signup: user => dispatch(signup(user)),
   clear: () => dispatch(clear)
 });
+
+const mediaOptions = [
+  { value: FacebookIcon, label: 'Facebook' },
+  { value: TwitterIcon, label: 'Twitter' },
+  { value: TelegramIcon, label: 'Telegram' },
+  { value: WhatsappIcon, label: 'Whatsapp' },
+  { value: LinkedinIcon, label: 'LinkedIn' },
+  { value: VKIcon, label: 'VK' },
+  { value: OKIcon, label: 'Odnoklassniki' },
+  { value: RedditIcon, label: 'Reddit' },
+  { value: TumblrIcon, label: 'Tumblr' },
+  { value: MailruIcon, label: 'Mail.Ru' },
+  { value: LivejournalIcon, label: 'LiveJournal' },
+  { value: ViberIcon, label: 'Viber' },
+  { value: WorkplaceIcon, label: 'Workplace' },
+  { value: LineIcon, label: 'Line' },
+  { value: PocketIcon, label: 'Pocket' },
+  { value: EmailIcon, label: 'Email' }
+];
 
 class MyFormContext extends React.Component {
   state = {
@@ -32,7 +70,8 @@ class MyFormContext extends React.Component {
     emailCheck: '',
     classifications: [],
     countryOptions: [],
-    showPassword: false
+    showPassword: false,
+    selectedOption: null
   };
 
   // Method for CRUD operation to sign up customer/consultant
@@ -110,7 +149,8 @@ class MyFormContext extends React.Component {
         qualifications: [],
         emailCheck: '',
         classifications: [],
-        countryOptions: []
+        countryOptions: [],
+        selectedOption: null
       });
     }
   };
@@ -130,8 +170,31 @@ class MyFormContext extends React.Component {
   handleCountryChange = regions => this.setState({ regions });
 
   // Method for updating media array
-  handleMediaChange = media =>
-    this.setState({ media: [...this.state.media, media] });
+  handleMediaChange = (media, index) =>
+    this.setState({ media: media.filter(()) });
+
+  // Method for deleting chosen media object
+  handleRemove = ind => {
+    const { media } = this.state;
+    this.setState({
+      media: media.filter((_, i) => i !== ind)
+    });
+  };
+
+  // Method for updated media link selection
+  handleChanges = selectedOption => {
+    this.setState({
+      selectedOption,
+      media: [
+        ...this.state.media,
+        {
+          iconType: `${selectedOption.label}`,
+          iconMedia: <selectedOption.value size={32} round={true} />,
+          iconURL: ''
+        }
+      ]
+    });
+  };
 
   // Method to automatically capitalize first syllables of each name
   generateCapitals = str => {
@@ -167,7 +230,7 @@ class MyFormContext extends React.Component {
   };
 
   render() {
-    console.log(this.state.media);
+    // console.log(this.state.media);
     return (
       <SignupContext.Provider
         value={{
@@ -188,6 +251,7 @@ class MyFormContext extends React.Component {
           countryOptions: this.state.countryOptions,
           showPassword: this.state.showPassword,
           errors: this.props.errors,
+          selectedOption: this.state.selectedOption,
           handleSubmit: this.handleSubmit,
           generateCapitals: this.generateCapitals,
           chooseType: this.chooseType,
@@ -200,7 +264,10 @@ class MyFormContext extends React.Component {
           handleInputChange: this.handleInputChange,
           handleMediaChange: this.handleMediaChange,
           handleToggle: this.handleToggle,
-          handleOnChange: this.handleOnChange
+          handleOnChange: this.handleOnChange,
+          handleChanges: this.handleChanges,
+          handleRemove: this.handleRemove,
+          mediaOptions: mediaOptions
         }}
       >
         {this.props.children}

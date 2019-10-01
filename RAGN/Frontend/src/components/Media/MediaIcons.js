@@ -1,100 +1,54 @@
 import React from 'react';
 import SignUpContext from '../../contexts/SignupContext';
 import Select from 'react-select';
-import {
-  FacebookIcon,
-  TwitterIcon,
-  TelegramIcon,
-  WhatsappIcon,
-  LinkedinIcon,
-  PinterestIcon,
-  VKIcon,
-  OKIcon,
-  RedditIcon,
-  TumblrIcon,
-  LivejournalIcon,
-  MailruIcon,
-  ViberIcon,
-  WorkplaceIcon,
-  LineIcon,
-  PocketIcon,
-  InstapaperIcon,
-  EmailIcon
-} from 'react-share';
-import { SocialIcon } from 'react-social-icons';
 import 'react-dropdown/style.css';
 import { Row, Column, Input, Box, Close } from './styled';
 import './Media.css';
 
-const mediaOptions = [
-  { value: FacebookIcon, label: 'Facebook' },
-  { value: TwitterIcon, label: 'Twitter' },
-  { value: TelegramIcon, label: 'Telegram' },
-  { value: WhatsappIcon, label: 'Whatsapp' },
-  { value: LinkedinIcon, label: 'LinkedIn' },
-  { value: PinterestIcon, label: 'Pinterest' },
-  { value: VKIcon, label: 'VK' },
-  { value: OKIcon, label: 'Odnoklassniki' },
-  { value: RedditIcon, label: 'Reddit' },
-  { value: TumblrIcon, label: 'Tumblr' },
-  { value: MailruIcon, label: 'Mail.Ru' },
-  { value: LivejournalIcon, label: 'LiveJournal' },
-  { value: ViberIcon, label: 'Viber' },
-  { value: WorkplaceIcon, label: 'Workplace' },
-  { value: LineIcon, label: 'Line' },
-  { value: PocketIcon, label: 'Pocket' },
-  { value: InstapaperIcon, label: 'Instapaper' },
-  { value: EmailIcon, label: 'Email' }
-];
-
 class MediaIcons extends React.Component {
-  state = {
-    selectedOption: null,
-    options: [],
-    icons: ''
-  };
-
-  handleChange = selectedOption => {
-    this.setState({
-      selectedOption,
-      options: [
-        ...this.state.options,
-        <selectedOption.value size={32} round={true} />
-      ]
-    });
-  };
-
   render() {
-    const { selectedOption, options } = this.state;
-    console.log(selectedOption);
+    // const { selectedOption, options } = this.state;
+    // console.log(context.media);
     return (
       <SignUpContext.Consumer>
         {context => (
           <>
             <Select
               id="select"
-              value={selectedOption}
-              onChange={this.handleChange}
-              options={mediaOptions}
+              value={context.selectedOption}
+              onChange={context.handleChanges}
+              options={context.mediaOptions}
               style={{ width: '75%' }}
               className="dark-theme"
             />
             <div>
               <Row>
                 <Column lg="12" md="12" sm="12" xs="12">
-                  <ul>
-                    {options.length !== -1 && (
+                  {context.media && (
+                    <ul>
                       <div>
-                        {options.map((opt, index) => {
+                        {context.media.map((opt, index) => {
                           return (
-                            <li key={index}>
+                            <li
+                              key={index}
+                              //   onClick={() => this.handleClick(index)}
+                            >
                               <Box>
                                 <Row style={{ padding: '5px 0 5px 5px' }}>
                                   <Column lg="1" md="1" sm="1" xs="1">
-                                    <Close className="close">&times;</Close>
+                                    <Close
+                                      className="close"
+                                      onClick={() =>
+                                        context.handleRemove(index)
+                                      }
+                                    >
+                                      &times;
+                                    </Close>
                                   </Column>
                                   <Column lg="2" md="2" sm="2" xs="2">
-                                    <div style={{ float: 'right' }}>{opt}</div>
+                                    <div style={{ float: 'right' }}>
+                                      {opt.iconMedia}
+                                    </div>
                                   </Column>
                                   <Column
                                     style={{ marginLeft: '-20px' }}
@@ -104,9 +58,14 @@ class MediaIcons extends React.Component {
                                     xs="9"
                                   >
                                     <Input
+                                      id="iconURL"
                                       type="text"
-                                      value={context.media}
-                                      onChange={context.handleMediaChange}
+                                      value={context.opt.iconURL}
+                                      onChange={() =>
+                                        context.handleMediaChange(
+                                          ('iconURL', index)
+                                        )
+                                      }
                                       placeholder="Url for this icon..."
                                     />
                                   </Column>
@@ -116,8 +75,8 @@ class MediaIcons extends React.Component {
                           );
                         })}
                       </div>
-                    )}
-                  </ul>
+                    </ul>
+                  )}
                 </Column>
               </Row>
             </div>
