@@ -66,7 +66,7 @@ class MyFormContext extends React.Component {
     location: '',
     address: '',
     media: [],
-    qualifications: [],
+    qualifications: '',
     emailCheck: '',
     classifications: [],
     countryOptions: [],
@@ -77,6 +77,10 @@ class MyFormContext extends React.Component {
   // Method for CRUD operation to sign up customer/consultant
   handleSubmit = e => {
     e.preventDefault();
+    let mediaLinks = this.state.media.map(media => {
+      return { iconType: media.iconType, iconURL: media.iconURL };
+    });
+
     const user = {
       userType: this.state.signupType,
       username: this.state.contact,
@@ -87,7 +91,7 @@ class MyFormContext extends React.Component {
       address: this.state.address,
       classifications: this.state.classifications,
       regions: this.state.regions,
-      mediaLinks: this.state.media,
+      mediaLinks: mediaLinks,
       qualifications: this.state.qualifications
     };
 
@@ -146,7 +150,7 @@ class MyFormContext extends React.Component {
         regions: [],
         address: '',
         media: [],
-        qualifications: [],
+        qualifications: '',
         emailCheck: '',
         classifications: [],
         countryOptions: [],
@@ -169,10 +173,6 @@ class MyFormContext extends React.Component {
   // Method for updating regions array
   handleCountryChange = regions => this.setState({ regions });
 
-  // Method for updating media array
-  handleMediaChange = (media, index) =>
-    this.setState({ media: media.filter(()) });
-
   // Method for deleting chosen media object
   handleRemove = ind => {
     const { media } = this.state;
@@ -182,7 +182,7 @@ class MyFormContext extends React.Component {
   };
 
   // Method for updated media link selection
-  handleChanges = selectedOption => {
+  handleMediaChanges = selectedOption => {
     this.setState({
       selectedOption,
       media: [
@@ -193,6 +193,16 @@ class MyFormContext extends React.Component {
           iconURL: ''
         }
       ]
+    });
+  };
+
+  // Method for updating iconMedia url in specific media object
+  handleFormChange = ind => e => {
+    const { media } = this.state;
+    let data = [...media];
+    data[ind].iconURL = e.target.value;
+    this.setState({
+      data
     });
   };
 
@@ -225,12 +235,12 @@ class MyFormContext extends React.Component {
     }
   };
 
-  handleOnChange = value => {
+  handlePhoneChange = value => {
     this.setState({ phone: value });
   };
 
   render() {
-    // console.log(this.state.media);
+    console.log(this.state.regions);
     return (
       <SignupContext.Provider
         value={{
@@ -264,8 +274,9 @@ class MyFormContext extends React.Component {
           handleInputChange: this.handleInputChange,
           handleMediaChange: this.handleMediaChange,
           handleToggle: this.handleToggle,
-          handleOnChange: this.handleOnChange,
-          handleChanges: this.handleChanges,
+          handlePhoneChange: this.handlePhoneChange,
+          handleMediaChanges: this.handleMediaChanges,
+          handleFormChange: this.handleFormChange,
           handleRemove: this.handleRemove,
           mediaOptions: mediaOptions
         }}

@@ -37,10 +37,10 @@ export const Input = styled.input`
   font-size: 0.7em;
   height: 30px;
   width: 85%;
-  background: white;
-  float: right;
+  background: transparent;
   border: none;
-  border: 1px solid hsl(0, 0%, 80%);
+  border-bottom: 1px solid #000000;
+  float: right;
 
   ::placeholder {
     padding: 5px;
@@ -52,7 +52,7 @@ export const Input = styled.input`
     }
     color: #312b7f;
     outline: none;
-    border: 1px solid #312b7f;
+    border-bottom: 1px solid #312b7f;
   }
 `;
 
@@ -77,5 +77,26 @@ export const Close = styled.span`
   :hover,
   focus {
     color: #312b7f;
+  }
+`;
+
+export const Button = styled.button`
+  font-size: 15px;
+  padding: 8px 15px;
+  background-color: #939393;
+  outline: none;
+  color: #edeae7;
+  margin-left: 10px;
+
+  :hover {
+    cursor: pointer;
+    background-color: #312b7f;
+    color: white;
+    outline: none;
+  }
+
+  :active {
+    outline: none;
+    border: 0;
   }
 `;

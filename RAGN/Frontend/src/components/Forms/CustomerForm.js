@@ -105,7 +105,7 @@ class CustomerForm extends React.Component {
                 <PhoneInput
                   defaultCountry={'us'}
                   value={context.phone}
-                  onChange={context.handleOnChange}
+                  onChange={context.handlePhoneChange}
                 />
               </Column>
             </Row>

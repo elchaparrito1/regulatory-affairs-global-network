@@ -1,14 +1,12 @@
 import React from 'react';
-import SignUpContext from '../../contexts/SignupContext';
+import SignUpContext from '../../../contexts/SignupContext';
 import Select from 'react-select';
 import 'react-dropdown/style.css';
 import { Row, Column, Input, Box, Close } from './styled';
 import './Media.css';
 
-class MediaIcons extends React.Component {
+class MediaIconForm extends React.Component {
   render() {
-    // const { selectedOption, options } = this.state;
-    // console.log(context.media);
     return (
       <SignUpContext.Consumer>
         {context => (
@@ -16,7 +14,7 @@ class MediaIcons extends React.Component {
             <Select
               id="select"
               value={context.selectedOption}
-              onChange={context.handleChanges}
+              onChange={context.handleMediaChanges}
               options={context.mediaOptions}
               style={{ width: '75%' }}
               className="dark-theme"
@@ -29,10 +27,7 @@ class MediaIcons extends React.Component {
                       <div>
                         {context.media.map((opt, index) => {
                           return (
-                            <li
-                              key={index}
-                              //   onClick={() => this.handleClick(index)}
-                            >
+                            <li key={index}>
                               <Box>
                                 <Row style={{ padding: '5px 0 5px 5px' }}>
                                   <Column lg="1" md="1" sm="1" xs="1">
@@ -59,14 +54,10 @@ class MediaIcons extends React.Component {
                                   >
                                     <Input
                                       id="iconURL"
-                                      type="text"
-                                      value={context.opt.iconURL}
-                                      onChange={() =>
-                                        context.handleMediaChange(
-                                          ('iconURL', index)
-                                        )
-                                      }
+                                      type="url"
                                       placeholder="Url for this icon..."
+                                      value={opt.iconURL}
+                                      onChange={context.handleFormChange(index)}
                                     />
                                   </Column>
                                 </Row>
@@ -87,4 +78,4 @@ class MediaIcons extends React.Component {
   }
 }
 
-export default MediaIcons;
+export default MediaIconForm;

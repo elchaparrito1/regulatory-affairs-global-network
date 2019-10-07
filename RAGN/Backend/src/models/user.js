@@ -45,7 +45,9 @@ const UserSchema = new mongoose.Schema(
       regions: {
         type: Array
       },
-      mediaLinks: Array,
+      mediaLinks: {
+        type: Array
+      },
       qualifications: String
     }
   },

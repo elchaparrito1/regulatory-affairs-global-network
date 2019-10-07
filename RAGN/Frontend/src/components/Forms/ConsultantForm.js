@@ -2,7 +2,8 @@ import React from 'react';
 import SignUpContext from '../../contexts/SignupContext';
 import ShowImg from '../../images/show.png';
 import HideImg from '../../images/hide.png';
-import MediaIcons from '../../components/Media/MediaIcons';
+import MediaIconForm from './MediaIconForm/MediaIconForm';
+import QualificationsForm from './QualificationsForm/QualificationsForm';
 
 //Import of various APIs
 import Select from 'react-select';
@@ -20,6 +21,7 @@ import {
 } from './styled';
 
 import './SignUpForm.css';
+import QualitifcationsForm from './QualificationsForm/QualificationsForm';
 
 const classificationOptions = [
   { value: 'food', label: 'Food' },
@@ -66,7 +68,7 @@ class ConsultantForm extends React.Component {
                 <PhoneInput
                   defaultCountry={'us'}
                   value={context.phone}
-                  onChange={context.handleOnChange}
+                  onChange={context.handlePhoneChange}
                 />
               </Column>
               <Column lg="6" md="6" sm="6" xs="6">
@@ -75,7 +77,7 @@ class ConsultantForm extends React.Component {
                   rows="12"
                   cols="50"
                   id="address"
-                  placeholder="Your business address with proper indentation..."
+                  placeholder="Your current business address..."
                   value={context.address}
                   autoComplete="off"
                   onChange={context.handleInputChange('address')}
@@ -160,7 +162,7 @@ class ConsultantForm extends React.Component {
                 xs="6"
               >
                 <FormLabel>Media Links</FormLabel>
-                <MediaIcons />
+                <MediaIconForm />
               </Column>
               <Column
                 style={{ marginBottom: '15px' }}
@@ -170,14 +172,7 @@ class ConsultantForm extends React.Component {
                 xs="6"
               >
                 <FormLabel>Qualifications</FormLabel>
-                <Input
-                  id="qualifications"
-                  type="text"
-                  placeholder="Your qualifications..."
-                  value={context.qualifications}
-                  autoComplete="off"
-                  onChange={context.handleInputChange('qualifications')}
-                />
+                <QualitifcationsForm />
               </Column>
             </Row>
           </>

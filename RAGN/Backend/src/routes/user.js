@@ -1,7 +1,7 @@
 import Joi from 'joi';
 import express from 'express';
 import User from '../models/user';
-import { signUp } from '../validations/user';
+import { customerSignUp, consultantSignUp } from '../validations/user';
 import { parseError, sessionizeUser } from '../util/helpers';
 
 const userRouter = express.Router();
@@ -30,7 +30,10 @@ userRouter.post('', async (req, res) => {
       );
     }
 
-    await Joi.validate({ username, email, password, phone, company }, signUp);
+    await Joi.validate(
+      { email, password, company, username, phone },
+      customerSignUp
+    );
 
     // If the above passes, define a new User instance and attempt to save that user.
     if (userType === 'customer') {
@@ -49,19 +52,27 @@ userRouter.post('', async (req, res) => {
       req.session.user = sessionUser;
       res.send(sessionUser);
     } else {
-      const consultantInfo = {
+      let consultantInfo = {
         address,
         classifications,
-        regions
+        regions,
+        mediaLinks,
+        qualifications
       };
 
-      for (var key in consultantInfo) {
-        if (consultantInfo[key] === '') {
-          throw new Error(
-            'Please fill out all required fields for Consultant signup.'
-          );
-        }
-      }
+      await Joi.validate(
+        {
+          email,
+          password,
+          company,
+          username,
+          phone,
+          address,
+          regions,
+          classifications
+        },
+        consultantSignUp
+      );
 
       const newUser = new User({
         username,
@@ -70,10 +81,10 @@ userRouter.post('', async (req, res) => {
         userType,
         company,
         phone,
-        consultantInfo,
-        mediaLinks,
-        qualifications
+        consultantInfo
       });
+
+      console.log(newUser);
 
       const sessionUser = sessionizeUser(newUser);
       await newUser.save();

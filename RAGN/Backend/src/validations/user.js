@@ -1,34 +1,12 @@
 import Joi from 'joi';
 
-// Define an company, email, username, password, and phone number each with validations tacked on.
-const company = Joi.string()
-  .min(1)
-  .required()
-  .error(errors => {
-    return {
-      message:
-        'Must include company name. If for personal use, enter "private" into field.'
-    };
-  });
-
+// Define an company, email, username, password, phone number, region(s), classification(s), and mediaLinks each with validations tacked on.
 const email = Joi.string()
   .email()
   .required()
   .error(errors => {
     return {
       message: 'Email must contain @ symbol and valid domain.'
-    };
-  });
-
-const username = Joi.string()
-  .regex(/^[a-zA-Z_ ]*$/)
-  .min(3)
-  .max(30)
-  .required()
-  .error(errors => {
-    return {
-      message:
-        'Contact name must contain between 3-30 alpha-numeric characters.'
     };
   });
 
@@ -49,25 +27,79 @@ const password = Joi.string()
     };
   });
 
-// And phone number
-const phone = Joi.string()
-  .min(12)
-  .max(15)
+const company = Joi.string()
+  .min(1)
   .required()
   .error(errors => {
     return {
       message:
-        'Phone number must contain between 12-15 digits. "+" symbol and country code will save automatically with entry.'
+        'Must include company name. If for personal use, enter "private" into field.'
     };
   });
 
+const username = Joi.string()
+  .regex(/^[a-zA-Z_ ]*$/)
+  .min(3)
+  .max(30)
+  .required()
+  .error(errors => {
+    return {
+      message:
+        'Contact name must contain between 3-30 alpha-numeric characters.'
+    };
+  });
+
+// And phone number
+const phone = Joi.string()
+  .min(12)
+  .max(20)
+  .required()
+  .error(errors => {
+    return {
+      message:
+        'Phone number must contain at least 12 digits. "+" symbol and country code will save automatically with entry.'
+    };
+  });
+
+const address = Joi.string()
+  .min(1)
+  .required()
+  .error(errors => {
+    return { message: 'Please entered a current business address.' };
+  });
+
+const regions = Joi.array()
+  .min(1)
+  .required()
+  .error(errors => {
+    return { message: 'Please select region(s) of expertise.' };
+  });
+
+const classifications = Joi.array()
+  .min(1)
+  .required()
+  .error(errors => {
+    return { message: 'Please select classification(s) of expertise.' };
+  });
+
 // Use email, username, and password to create and export two Joi objects.
-export const signUp = Joi.object().keys({
+export const customerSignUp = Joi.object().keys({
   email,
-  username,
   password,
   company,
+  username,
   phone
+});
+
+export const consultantSignUp = Joi.object().keys({
+  email,
+  password,
+  company,
+  username,
+  phone,
+  address,
+  regions,
+  classifications
 });
 
 export const signIn = Joi.object().keys({
