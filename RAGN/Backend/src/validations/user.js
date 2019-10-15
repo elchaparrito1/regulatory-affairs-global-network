@@ -13,10 +13,7 @@ const email = Joi.string()
 // By default, Joi provides a message if something is invalid.
 // But for the password field it actually prints out the user's guessed password. A password should never be visible.
 // So, create a custom message and dig into the options object to pass it in.
-const message = `Password must be between 6-16 characters, 
-    have at least one capital letter, 
-    one lowercase letter, one digit, 
-    one special character.`;
+const message = `Invalid password. Follow instructions given for valid password entry.`;
 
 // Then use a regular expression to get nitty-gritty specific for our password validation.
 const password = Joi.string()
@@ -68,18 +65,18 @@ const address = Joi.string()
     return { message: 'Please entered a current business address.' };
   });
 
-const regions = Joi.array()
-  .min(1)
-  .required()
-  .error(errors => {
-    return { message: 'Please select region(s) of expertise.' };
-  });
-
 const classifications = Joi.array()
   .min(1)
   .required()
   .error(errors => {
     return { message: 'Please select classification(s) of expertise.' };
+  });
+
+const regions = Joi.array()
+  .min(1)
+  .required()
+  .error(errors => {
+    return { message: 'Please select region(s) of expertise.' };
   });
 
 // Use email, username, and password to create and export two Joi objects.
@@ -98,8 +95,8 @@ export const consultantSignUp = Joi.object().keys({
   username,
   phone,
   address,
-  regions,
-  classifications
+  classifications,
+  regions
 });
 
 export const signIn = Joi.object().keys({

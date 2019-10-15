@@ -68,8 +68,8 @@ userRouter.post('', async (req, res) => {
           username,
           phone,
           address,
-          regions,
-          classifications
+          classifications,
+          regions
         },
         consultantSignUp
       );
@@ -84,7 +84,7 @@ userRouter.post('', async (req, res) => {
         consultantInfo
       });
 
-      console.log(newUser);
+      // console.log(newUser);
 
       const sessionUser = sessionizeUser(newUser);
       await newUser.save();

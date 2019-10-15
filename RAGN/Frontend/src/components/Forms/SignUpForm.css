@@ -1,3 +1,4 @@
+/* Styling for React-Select API. */
 .react-tel-input input[type='text'],
 .react-tel-input input[type='tel'] {
   position: relative;
@@ -37,4 +38,18 @@
   font-size: 15px;
   position: relative;
   width: 100%;
+}
+
+/* Popup container - can be anything you want */
+.highlight {
+  transition: all 0.2s;
+  border-bottom: 2px solid white;
+  position: absolute;
+  top: 0;
+  background: white;
+  left: 0;
+  z-index: -1;
+  border-radius: 20px;
+  display: block;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }

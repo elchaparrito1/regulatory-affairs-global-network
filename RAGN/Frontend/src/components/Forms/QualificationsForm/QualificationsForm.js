@@ -1,6 +1,6 @@
 import React from 'react';
 import SignUpContext from '../../../contexts/SignupContext';
-import { Row, Column, Input, Box, Close, Button } from './styled';
+import { Row, Column, Input, Box, Close, Span, FormLabel } from './styled';
 
 class QualitifcationsForm extends React.Component {
   render() {
@@ -8,48 +8,58 @@ class QualitifcationsForm extends React.Component {
       <SignUpContext.Consumer>
         {context => (
           <>
+            <FormLabel>Qualifications</FormLabel>
             <Input
-              id="qualifications"
+              id="qualification"
               type="text"
               placeholder="Your qualifications..."
-              value={context.qualifications}
+              value={context.qualification}
               autoComplete="off"
-              onChange={context.handleInputChange('qualifications')}
+              onChange={context.handleInputChange('qualification')}
             />
-            <Button>Add</Button>
+            <Span onClick={context.handleQualChange}>&#43;</Span>
             <div>
               <Row>
                 <Column lg="12" md="12" sm="12" xs="12">
-                  {/* {context.media && (
+                  {context.qualifications && (
                     <ul>
                       <div>
-                        {context.media.map((opt, index) => {
+                        {context.qualifications.map((qual, index) => {
                           return (
                             <li key={index}>
                               <Box>
-                                <Row style={{ padding: '5px 0 5px 5px' }}>
+                                <Row
+                                  style={{
+                                    height: '100%',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
+                                  }}
+                                >
                                   <Column lg="1" md="1" sm="1" xs="1">
                                     <Close
                                       className="close"
                                       onClick={() =>
-                                        context.handleRemove(index)
+                                        context.handleRemove(
+                                          'qualifications',
+                                          context.qualifications,
+                                          index
+                                        )
                                       }
                                     >
                                       &times;
                                     </Close>
                                   </Column>
-                                  <Column lg="2" md="2" sm="2" xs="2">
-                                    <div style={{ float: 'right' }}>
-                                      {opt.iconMedia}
+                                  <Column lg="11" md="11" sm="11" xs="11">
+                                    <div
+                                      style={{
+                                        float: 'left',
+                                        padding: '8px'
+                                      }}
+                                    >
+                                      {qual}
                                     </div>
                                   </Column>
-                                  <Column
-                                    style={{ marginLeft: '-20px' }}
-                                    lg="9"
-                                    md="9"
-                                    sm="9"
-                                    xs="9"
-                                  ></Column>
                                 </Row>
                               </Box>
                             </li>
@@ -57,7 +67,7 @@ class QualitifcationsForm extends React.Component {
                         })}
                       </div>
                     </ul>
-                  )} */}
+                  )}
                 </Column>
               </Row>
             </div>

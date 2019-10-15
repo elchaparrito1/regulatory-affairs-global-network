@@ -3,6 +3,7 @@ import SignUpContext from '../../../contexts/SignupContext';
 import Select from 'react-select';
 import 'react-dropdown/style.css';
 import { Row, Column, Input, Box, Close } from './styled';
+
 import './Media.css';
 
 class MediaIconForm extends React.Component {
@@ -34,7 +35,11 @@ class MediaIconForm extends React.Component {
                                     <Close
                                       className="close"
                                       onClick={() =>
-                                        context.handleRemove(index)
+                                        context.handleRemove(
+                                          'media',
+                                          context.media,
+                                          index
+                                        )
                                       }
                                     >
                                       &times;

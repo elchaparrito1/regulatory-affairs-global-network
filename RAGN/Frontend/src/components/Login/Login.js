@@ -72,7 +72,6 @@ class Login extends React.Component {
     this.setState({
       userType: event.target.value
     });
-    console.log(this.state.userType);
   };
 
   // Method to check that email has been entered in.

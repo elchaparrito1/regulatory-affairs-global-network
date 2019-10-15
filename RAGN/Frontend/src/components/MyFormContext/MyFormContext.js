@@ -66,7 +66,8 @@ class MyFormContext extends React.Component {
     location: '',
     address: '',
     media: [],
-    qualifications: '',
+    qualification: '',
+    qualifications: [],
     emailCheck: '',
     classifications: [],
     countryOptions: [],
@@ -150,7 +151,8 @@ class MyFormContext extends React.Component {
         regions: [],
         address: '',
         media: [],
-        qualifications: '',
+        qualification: '',
+        qualifications: [],
         emailCheck: '',
         classifications: [],
         countryOptions: [],
@@ -164,8 +166,9 @@ class MyFormContext extends React.Component {
     this.setState({ signupType: event.target.value });
 
   // Method for updating input fields
-  handleInputChange = name => event =>
+  handleInputChange = name => event => {
     this.setState({ [name]: event.target.value });
+  };
 
   // Method for updating classifications array
   handleClassChange = classifications => this.setState({ classifications });
@@ -173,11 +176,17 @@ class MyFormContext extends React.Component {
   // Method for updating regions array
   handleCountryChange = regions => this.setState({ regions });
 
-  // Method for deleting chosen media object
-  handleRemove = ind => {
-    const { media } = this.state;
+  // Method specific for updating qualifications entry
+  handleQualChange = () =>
     this.setState({
-      media: media.filter((_, i) => i !== ind)
+      qualifications: [...this.state.qualifications, this.state.qualification],
+      qualification: ''
+    });
+
+  // Method for deleting objects from media and qualifications array
+  handleRemove = (name, src, ind) => {
+    this.setState({
+      [name]: src.filter((_, i) => i !== ind)
     });
   };
 
@@ -224,15 +233,13 @@ class MyFormContext extends React.Component {
   // Method for toggling show/hide password
   handleToggle = e => {
     e.preventDefault();
-    if (this.state.showPassword) {
-      this.setState({
-        showPassword: false
-      });
-    } else {
-      this.setState({
-        showPassword: true
-      });
-    }
+    this.state.showPassword
+      ? this.setState({
+          showPassword: false
+        })
+      : this.setState({
+          showPassword: true
+        });
   };
 
   handlePhoneChange = value => {
@@ -240,7 +247,6 @@ class MyFormContext extends React.Component {
   };
 
   render() {
-    console.log(this.state.regions);
     return (
       <SignupContext.Provider
         value={{
@@ -255,6 +261,7 @@ class MyFormContext extends React.Component {
           location: this.state.location,
           address: this.state.address,
           media: this.state.media,
+          qualification: this.state.qualification,
           qualifications: this.state.qualifications,
           emailCheck: this.state.emailCheck,
           classifications: this.state.classifications,
@@ -278,6 +285,7 @@ class MyFormContext extends React.Component {
           handleMediaChanges: this.handleMediaChanges,
           handleFormChange: this.handleFormChange,
           handleRemove: this.handleRemove,
+          handleQualChange: this.handleQualChange,
           mediaOptions: mediaOptions
         }}
       >

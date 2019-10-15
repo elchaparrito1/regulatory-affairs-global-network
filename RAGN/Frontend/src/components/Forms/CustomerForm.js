@@ -7,7 +7,7 @@ import HideImg from '../../images/hide.png';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/dist/style.css';
 
-import { Row, Column, FormLabel, Input, Icon } from './styled';
+import { Row, Column, FormLabel, Input, Icon, TextMessage } from './styled';
 
 import './SignUpForm.css';
 
@@ -88,6 +88,12 @@ class CustomerForm extends React.Component {
                   autoComplete="off"
                   onChange={context.handleInputChange('password')}
                 />
+                <Column lg="15" md="15" sm="15" xs="15">
+                  <TextMessage box>
+                    6-16 characters, one capital letter, one lowercase letter,
+                    one digit, one special character.
+                  </TextMessage>
+                </Column>
               </Column>
               <Column lg="1" md="1" sm="1" xs="1">
                 <span>

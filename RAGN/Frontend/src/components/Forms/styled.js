@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import Select from 'react-select';
 
 export const Row = styled.div`
-  align-items: center;
+  align-items: left;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   &::after {
     content: '';
     clear: both;
@@ -43,16 +43,16 @@ export const Box = styled.div`
   height: 70px;
   width: 400px;
   padding: 0 30px 0 30px;
-  align-items: center;
+  align-items: left;
   display: flex;
-  justify-content: center;
+  justify-content: left;
 `;
 
 export const Label = styled.label`
   margin-right: 10px;
-  align-items: center;
+  align-items: left;
   display: flex;
-  justify-content: center;
+  justify-content: left;
 `;
 
 export const FormLabel = styled(Label)`
@@ -143,14 +143,15 @@ export const Selector = styled(Select)`
 export const TextMessage = styled.p`
   font-size: 0.8em;
   text-align: left;
-  margin-top: ${props => (props.box ? '-10px' : '-13px')};
+  margin-top: ${props => (props.box ? '-10px' : '-30px')};
   margin-right: 195px;
 `;
 
 export const Icon = styled.img`
-  width: 30px;
-  height: 30px;
-  margin-left: -90px;
+  width: ${props => (props.info ? '15px' : '30px')};
+  height: ${props => (props.info ? '15px' : '30px')};
+  margin-left: ${props => (props.info ? '-115px' : '-105px')};
+  margin-top: ${props => (props.info ? '2px' : '10px')};
 
   :hover {
     cursor: pointer;

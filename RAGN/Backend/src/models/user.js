@@ -48,7 +48,9 @@ const UserSchema = new mongoose.Schema(
       mediaLinks: {
         type: Array
       },
-      qualifications: String
+      qualifications: {
+        type: Array
+      }
     }
   },
   { timestamps: true }

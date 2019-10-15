@@ -79,7 +79,7 @@ export const ModalBody = styled.div`
 export const Close = styled.span`
   color: #ccc;
   float: right;
-  font-size: 30px;
+  font-size: 35px;
   color: black;
   cursor: pointer;
 

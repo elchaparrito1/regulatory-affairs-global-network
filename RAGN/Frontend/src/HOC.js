@@ -143,7 +143,7 @@ const requiredSessionAuthentication = ComposedComponent => {
     };
 
     render() {
-      console.log(this.state.count);
+      // console.log(this.state.count);
       return (
         <>
           <WarningModal

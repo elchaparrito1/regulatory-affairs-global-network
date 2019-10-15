@@ -34,13 +34,12 @@ export const Column = styled.div`
 
 export const Input = styled.input`
   /* margin: 0 auto; */
-  font-size: 0.7em;
+  font-size: 1em;
   height: 30px;
-  width: 85%;
+  width: 75%;
   background: transparent;
   border: none;
   border-bottom: 1px solid #000000;
-  float: right;
 
   ::placeholder {
     padding: 5px;
@@ -61,6 +60,11 @@ export const Box = styled.div`
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   width: 65%;
   transition: transform 0.2s;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-word;
 
   :hover {
     transform: scale(1.1);
@@ -80,18 +84,19 @@ export const Close = styled.span`
   }
 `;
 
-export const Button = styled.button`
-  font-size: 15px;
-  padding: 8px 15px;
-  background-color: #939393;
+export const Span = styled.span`
+  font-size: 35px;
+  background-color: transparent;
   outline: none;
-  color: #edeae7;
-  margin-left: 10px;
+  color: #939393;
+  border: 0;
+  height: 50%;
 
   :hover {
     cursor: pointer;
-    background-color: #312b7f;
-    color: white;
+    background-color: transparent;
+    border: 0;
+    color: #312b7f;
     outline: none;
   }
 
@@ -99,4 +104,28 @@ export const Button = styled.button`
     outline: none;
     border: 0;
   }
+`;
+
+export const Label = styled.label`
+  margin-right: 10px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`;
+
+export const FormLabel = styled(Label)`
+  align-items: left;
+  display: flex;
+  justify-content: left;
+
+  :focus {
+    color: #312b7f;
+  }
+`;
+
+export const TextMessage = styled.p`
+  font-size: 0.8em;
+  text-align: left;
+  margin-top: ${props => (props.box ? '-10px' : '-13px')};
+  margin-right: 195px;
 `;
