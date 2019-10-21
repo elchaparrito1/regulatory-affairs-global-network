@@ -186,7 +186,7 @@ class ConsultantForm extends React.Component {
                 <MediaIconForm />
                 <span>
                   {this.state.mediaInfo && (
-                    <Column lg="12" md="12" sm="12" xs="12">
+                    <Column lg="14" md="14" sm="14" xs="14">
                       <TextMessage
                         box
                       >{`Aside from email and phone, media links may be assigned to the account. Just select from the dropdown, and input desired URL.`}</TextMessage>
@@ -198,7 +198,7 @@ class ConsultantForm extends React.Component {
                 <QualificationsForm />
                 <span>
                   {this.state.qualInfo && (
-                    <Column lg="12" md="12" sm="12" xs="12">
+                    <Column lg="15" md="15" sm="15" xs="15">
                       <TextMessage
                         box
                       >{`If there are additional credentials or qualifications to append to the account, input the information, and then press the "+" symbol.`}</TextMessage>
