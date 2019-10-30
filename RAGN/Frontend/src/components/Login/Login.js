@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../actions/session';
+import ForgotPassword from '../Forms/ForgotPassword/ForgotPassword';
 import {
   Row,
   Column,
@@ -247,13 +248,16 @@ class Login extends React.Component {
                     </Column>
                   </Row>
                 )}
-                <Row>
-                  <Column lg="12" md="12" sm="12" xs="12">
+                <Row style={{ marginRight: '30px' }}>
+                  <Column lg="6" md="6" sm="6" xs="6">
                     <input
                       className="input-style"
                       type="submit"
                       value="Login"
                     />
+                  </Column>
+                  <Column lg="6" md="6" sm="6" xs="6">
+                    <ForgotPassword />
                   </Column>
                 </Row>
               </form>

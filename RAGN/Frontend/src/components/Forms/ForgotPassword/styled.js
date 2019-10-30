@@ -62,30 +62,17 @@ export const Box = styled.div`
   }
 `;
 
-export const Text = styled.p`
-  font-size: 2em;
-  text-align: center;
-`;
-
 export const TextMessage = styled.p`
-  font-size: 0.8em;
-  text-align: right;
-  color: red;
-  margin-top: -15px;
-  margin-right: ${props => (props.password ? '40px' : '5px')};
-`;
-
-export const LoginMessage = styled(TextMessage)`
-  color: #e68a00;
+  font-size: 0.9em;
   text-align: left;
-  font-size: 1em;
+  width: 80%;
 `;
 
 export const Input = styled.input`
-  margin: 0 auto;
+  float: left;
   font-size: 1em;
   height: 30px;
-  width: 99%;
+  width: 30%;
   margin-bottom: 15px;
 
   background: transparent;
@@ -127,32 +114,6 @@ export const Button = styled.button`
   :active {
     outline: none;
     border: 0;
-  }
-`;
-
-export const TextSelection = styled.p`
-  font-size: 0.9em;
-  display: block;
-  margin-left: 5px;
-
-  :hover {
-    color: #312b7f;
-    opacity: 1;
-    cursor: pointer;
-  }
-
-  :hover::after {
-    width: 100%;
-    outline: none;
-  }
-`;
-
-export const Icon = styled.img`
-  width: 30px;
-  height: 30px;
-
-  :hover {
-    cursor: pointer;
   }
 `;
 

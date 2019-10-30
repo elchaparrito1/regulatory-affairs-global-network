@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 class Dashboard extends React.Component {
   render() {
     const { logout, session } = this.props;
-    console.log(session);
+    // console.log(session.usertype);
     return (
       <>
-        {/* <h1>Hi {session.username}</h1>
-        <h3>Address: {session.userObj.address}</h3>
-        <h1>Classifications: {session.userObj.classifications}</h1>
-        <h2>Regions: {session.userObj.regions}</h2> */}
+        {session.usertype === 'consultant' ? (
+          <h1>You're a consultant</h1>
+        ) : (
+          <h1>You're a customer you mofo</h1>
+        )}
 
         <p>You are now logged in!</p>
         <button onClick={logout}>Logout</button>

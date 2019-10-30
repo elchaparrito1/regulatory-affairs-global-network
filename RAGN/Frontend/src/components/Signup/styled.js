@@ -49,7 +49,7 @@ export const Box = styled.div`
 `;
 
 export const Label = styled.label`
-  margin-right: 10px;
+  margin-right: 40px;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -95,7 +95,7 @@ export const Button = styled.button`
   background-color: #939393;
   outline: none;
   color: #edeae7;
-  margin-left: 10px;
+  margin-left: 40px;
   border: 0;
 
   :hover {
