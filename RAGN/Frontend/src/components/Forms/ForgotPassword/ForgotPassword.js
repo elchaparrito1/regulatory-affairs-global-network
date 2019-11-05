@@ -1,22 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import BlankModal from '../../Modals/BlankModal';
-import { receiveErrors } from '../../../actions/error';
-import { Row, Column, Input, TextMessage, P } from './styled';
+import { Row, Column, Input, TextMessage, P, ErrorMessage } from './styled';
 import util from '../../../util/forgotpassword';
-
-const mapStateToProps = ({ errors }) => ({
-  errors
-});
-
-const mapDispatchToProps = dispatch => ({
-  receiveErrors: data => dispatch(receiveErrors(data))
-});
 
 class ForgotPassword extends React.Component {
   state = {
     isOpen: false,
-    email: ''
+    email: '',
+    message: ''
   };
 
   // Method for handling email input
@@ -24,24 +15,6 @@ class ForgotPassword extends React.Component {
     e.preventDefault();
     this.setState({
       email: e.target.value
-    });
-  };
-
-  // Method for sending email to reset password
-  handleSubmit = e => {
-    const { email } = this.state;
-    e.preventDefault();
-    util.forgotpassword(email).then(response => {
-      console.log(response.data);
-      if (response.data === 'email sent') {
-        this.setState({
-          isOpen: false,
-          email: ''
-        });
-      } else {
-        console.log(response.data);
-        this.props.receiveErrors(response.data);
-      }
     });
   };
 
@@ -53,13 +26,37 @@ class ForgotPassword extends React.Component {
       });
     } else if (this.state.isOpen) {
       this.setState({
-        isOpen: false
+        isOpen: false,
+        email: '',
+        message: ''
       });
     }
   };
 
+  // Method for sending email to reset password
+  handleSubmit = e => {
+    const { email } = this.state;
+    e.preventDefault();
+    util.forgotpassword(email).then(response => {
+      if (response.data === 'blank email') {
+        this.setState({
+          message: 'Please enter your email.'
+        });
+      } else if (response.data === 'not found') {
+        this.setState({
+          message: 'User not found with this email.'
+        });
+      } else if (response.data === 'email sent') {
+        this.setState({
+          message: 'Link sent. Please check your email to reset password.',
+          email: ''
+        });
+        setTimeout(this.handleModal, 4000);
+      }
+    });
+  };
+
   render() {
-    console.log(this.props.errors);
     return (
       <>
         <BlankModal
@@ -100,10 +97,17 @@ class ForgotPassword extends React.Component {
                   />
                 </Column>
               </Row>
+              {this.state.message && (
+                <Row>
+                  <Column lg="12" md="12" sm="12" xs="12">
+                    <ErrorMessage>{this.state.message}</ErrorMessage>
+                  </Column>
+                </Row>
+              )}
             </>
           }
           footerMethod={this.handleSubmit}
-          footer="Reset Password"
+          footer="Send Link"
         />
         <div onClick={this.handleModal}>
           <P>Forgot password?</P>
@@ -113,7 +117,4 @@ class ForgotPassword extends React.Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ForgotPassword);
+export default ForgotPassword;

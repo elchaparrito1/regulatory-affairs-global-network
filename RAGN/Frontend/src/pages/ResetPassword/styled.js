@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
 export const Row = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
   &::after {
     content: '';
     clear: both;
     display: table;
+    margin: 0 auto;
   }
 `;
 
@@ -16,7 +20,7 @@ function getWidthString(span) {
 }
 
 export const Column = styled.div`
-  float: left;
+  float: center;
   ${({ xs }) => (xs ? getWidthString(xs) : 'width: 100%')};
 
   @media only screen and (min-width: 768px) {
@@ -38,7 +42,8 @@ export const Box = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   height: 450px;
   width: 400px;
-  padding: 0 30px 0 30px;
+  padding: 30px 30px 0 30px;
+  position: relative;
 
   .input-style {
     font-size: 15px;
@@ -46,7 +51,7 @@ export const Box = styled.div`
     background-color: #939393;
     outline: none;
     color: #edeae7;
-    float: left;
+    float: center;
 
     :hover {
       cursor: pointer;
@@ -62,26 +67,12 @@ export const Box = styled.div`
   }
 `;
 
-export const TextMessage = styled.p`
-  font-size: 0.9em;
-  text-align: left;
-  width: 80%;
-`;
-
-export const ErrorMessage = styled(TextMessage)`
-  font-size: 1em;
-  width: 100%;
-  text-align: center;
-  color: #e68a00;
-`;
-
 export const Input = styled.input`
-  float: left;
+  margin: 0 auto;
   font-size: 1em;
   height: 30px;
-  width: 30%;
+  width: 75%;
   margin-bottom: 15px;
-
   background: transparent;
   border: none;
   border-bottom: 1px solid #000000;
@@ -98,10 +89,6 @@ export const Input = styled.input`
     outline: none;
     border-bottom: 1px solid #312b7f;
   }
-`;
-
-export const Label = styled.label`
-  text-align: center;
 `;
 
 export const Button = styled.button`
@@ -124,13 +111,14 @@ export const Button = styled.button`
   }
 `;
 
-export const P = styled.p`
-  font-size: 0.9em;
-  float: right;
-  margin-top: 10px;
+export const TextMessage = styled.p`
+  font-size: 0.8em;
+  text-align: center;
+  margin-top: ${props => (props.box ? '-10px' : '-30px')};
+  margin-right: 195px;
+`;
 
-  :hover {
-    cursor: pointer;
-    color: #312b7f;
-  }
+export const Image = styled.img`
+  width: 55%;
+  height: 55%;
 `;

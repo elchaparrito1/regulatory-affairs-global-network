@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import Home from '../src/pages/Home';
 import AuthPage from '../src/pages/AuthPage';
+import ResetPassword from '../src/pages/ResetPassword';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Dashboard from './components/Dashboard';
@@ -15,6 +16,7 @@ export default () => (
     <AuthRoute path="/login-signup" component={AuthPage} />
     <AuthRoute path="/login" component={Login} />
     <AuthRoute path="/signup" component={Signup} />
+    <AuthRoute path="/resetpassword/:token" component={ResetPassword} />
     <ProtectedRoute
       path="/dashboard"
       component={requiredSessionAuthentication(Dashboard)}

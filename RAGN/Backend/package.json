@@ -22,7 +22,9 @@
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "joi": "^14.3.1",
+    "mailer": "^0.6.7",
     "mongoose": "^5.6.4",
+    "node": "^12.13.0",
     "react-intl": "^3.1.1",
     "sendgrid": "^5.2.3"
   },

@@ -107,31 +107,19 @@ userRouter.post('', async (req, res) => {
       await newUser.save();
 
       // If that passes, send back what the frontend should have access to.
-      let transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 587,
-        secure: false,
-        requireTLS: true,
-        auth: {
-          user: 'mitchelltwaite11@gmail.com',
-          pass: 'Javascript2019'
-        }
-      });
-      let mailOptions = {
-        from: 'mitchelltwaite11@gmail.com',
-        replyTo: 'mitchelltwaite11@gmail.com',
+      const msg = {
         to: email,
-        subject: 'Email Confirmation - RAGN',
-        template: 'welcomeEmail'
-      };
-      transporter.sendMail(mailOptions, function(err, response) {
-        if (err) {
-          console.error('there was an error: ', err);
-        } else {
-          console.log('here is the res: ', response);
-          res.status(200).json('email sent');
+        from: 'mitchelltwaite11@gmail.com',
+        templateId: 'd-1e03b18c2c4f4b128e8b2c78ecc8bd9f',
+        dynamic_template_data: {
+          subject: 'Welcome to RAGN',
+          name: username,
+          email: email,
+          password: password
         }
-      });
+      };
+
+      sgMail.send(msg);
 
       req.session.user = sessionUser;
       res.send(sessionUser);

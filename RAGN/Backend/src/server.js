@@ -2,7 +2,13 @@ import express from 'express';
 import mongoose from 'mongoose';
 import session from 'express-session';
 import connectStore from 'connect-mongo';
-import { userRoutes, sessionRoutes } from './routes/index';
+import {
+  userRoutes,
+  sessionRoutes,
+  forgotPasswordRoutes,
+  resetPasswordRoutes,
+  updatePasswordRoutes
+} from './routes/index';
 import {
   PORT,
   NODE_ENV,
@@ -66,11 +72,14 @@ import {
     );
 
     // Set up another router called apiRouter, and tell app to use this router for any path beginning with “/api”.
-    // Then tell apiRouter to use userRoutes, for any path beginning with “/users”, or any other path that might be used (session).
+    // Then tell apiRouter to use userRoutes, for any path beginning with “/users”, or any other path that might be used (session, forgotpassword).
     const apiRouter = express.Router();
     app.use('/api', apiRouter);
     apiRouter.use('/users', userRoutes);
     apiRouter.use('/session', sessionRoutes);
+    apiRouter.use('/forgotpassword', forgotPasswordRoutes);
+    apiRouter.use('/resetpassword', resetPasswordRoutes);
+    apiRouter.use('/resetpassword/updatepassword', updatePasswordRoutes);
 
     app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
   } catch (err) {
