@@ -4,6 +4,7 @@ export const Row = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
+  margin-top: 15px;
   &::after {
     content: '';
     clear: both;
@@ -40,10 +41,11 @@ export const Box = styled.div`
   margin: 0 auto;
   background-color: #edeae7;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  height: 450px;
+  height: 460px;
   width: 400px;
   padding: 30px 30px 0 30px;
   position: relative;
+  transform: translateY(30%);
 
   .input-style {
     font-size: 15px;
@@ -71,11 +73,12 @@ export const Input = styled.input`
   margin: 0 auto;
   font-size: 1em;
   height: 30px;
-  width: 75%;
+  width: 100%;
   margin-bottom: 15px;
   background: transparent;
   border: none;
   border-bottom: 1px solid #000000;
+  float: left;
 
   ::placeholder {
     padding: 5px;
@@ -97,6 +100,7 @@ export const Button = styled.button`
   background-color: #939393;
   outline: none;
   color: #edeae7;
+  float: right;
 
   :hover {
     cursor: pointer;
@@ -112,13 +116,30 @@ export const Button = styled.button`
 `;
 
 export const TextMessage = styled.p`
-  font-size: 0.8em;
-  text-align: center;
-  margin-top: ${props => (props.box ? '-10px' : '-30px')};
-  margin-right: 195px;
+  font-size: 1em;
+  text-align: left;
 `;
 
 export const Image = styled.img`
-  width: 55%;
-  height: 55%;
+  width: 65%;
+  height: 65%;
+  margin: 0 auto;
+`;
+
+export const Label = styled.label`
+  margin-right: 10px;
+  align-items: left;
+  display: flex;
+  justify-content: left;
+`;
+
+export const FormLabel = styled(Label)`
+  font-size: 0.9em;
+  align-items: left;
+  display: flex;
+  justify-content: left;
+
+  :focus {
+    color: #312b7f;
+  }
 `;

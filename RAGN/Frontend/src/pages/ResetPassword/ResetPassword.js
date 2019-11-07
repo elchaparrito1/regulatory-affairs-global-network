@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import util from '../../util/forgotpassword';
 import './ResetPassword.css';
-import { Row, Column, Box, Input, Button, Image } from './styled';
+import { Row, Column, Box, Input, Button, Image, TextMessage } from './styled';
 import logo from '../../images/logo2.svg';
 
 class ResetPassword extends Component {
   state = {
-    password: '',
-    name: '',
+    newPassword: '',
+    confirmPassword: '',
     message: '',
-    isLoading: true,
-    error: false
+    passwordChanged: false,
+    error: false,
+    count: 10
   };
 
+  //Lifecycle method to check that the the password token is still valid
   componentDidMount() {
     const passwordToken = {
       params: { resetPasswordToken: this.props.match.params.token }
@@ -44,33 +46,48 @@ class ResetPassword extends Component {
       });
   }
 
+  //Lifecycle method that is not initially called, but rather after updating occurs.
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.count < 1) {
+      clearInterval(this.tick());
+      window.close();
+    }
+  }
+
+  // Standard method to update state
   handleChange = name => event => {
-    console.log(event.target.value);
     this.setState({
       [name]: event.target.value
     });
   };
 
-  updatePass = event => {
-    event.preventDefault();
-    console.log('This ran again');
+  // Method for closing the window, after a successful change of password
+  tick = () => {
+    console.log('running');
+    this.setState({ count: this.state.count - 1 });
+  };
+
+  // Method to update actual password
+  updatePass = () => {
     const passwordObj = {
-      password: this.state.password,
+      password: this.state.newPassword,
       passwordToken: this.props.match.params.token
     };
     util
       .updatepassword(passwordObj)
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.message === 'password updated') {
           this.setState({
-            error: false,
-            password: '',
-            message:
-              'Your password has been successfully reset, please try logging in again.'
+            newPassword: '',
+            confirmPassword: '',
+            message: `Your password has been successfully updated. Please try logging in again.`,
+            passwordChanged: true
           });
+          setInterval(() => this.tick(), 1000);
         } else if (response.data.name === 'ValidationError') {
           this.setState({
+            color: '#e68a00',
             message: response.data.details[0].message
           });
         } else {
@@ -84,71 +101,120 @@ class ResetPassword extends Component {
       });
   };
 
-  renderContent = () => {};
+  // Method to check that the two input field values match
+  checkMatch = event => {
+    event.preventDefault();
+    const { newPassword, confirmPassword } = this.state;
+    if (newPassword === confirmPassword) {
+      this.updatePass();
+    } else {
+      this.setState({
+        color: '#e68a00',
+        message: 'The passwords entered do not match.'
+      });
+    }
+  };
 
   render() {
-    const { password, error, isLoading, message } = this.state;
+    const {
+      newPassword,
+      error,
+      confirmPassword,
+      message,
+      passwordChanged,
+      count
+    } = this.state;
+    console.log(count);
     return (
-      <div>
+      <>
         <Box>
           <Row>
             <Column lg="12" md="12" sm="12" xs="12">
               <Image src={logo} />
             </Column>
           </Row>
-          <Row>
-            <Column lg="12" md="12" sm="12" xs="12">
-              {error && (
-                <div>
-                  <div className="loading">
-                    <h5>
-                      The link has expired or there was a problem resetting the
-                      password. Please <Link to="/login-signup">request</Link>{' '}
-                      another reset link.
-                    </h5>
-                  </div>
-                </div>
-              )}
-              {isLoading && (
-                <div>
-                  <div className="loader">Loading User Data...</div>
-                </div>
-              )}
-              {!error && (
-                <div>
-                  <div className="container reset-page">
-                    <div className="container">
-                      <h5 className="p-resetPassword">
-                        Please enter a new password below.
-                      </h5>
-                      <form
-                        className="password-form"
-                        onSubmit={this.updatePass}
-                      >
-                        <Input
-                          id="password"
-                          label="Password"
-                          onChange={this.handleChange('password')}
-                          value={password}
-                          type="text"
-                          autoComplete="off"
-                        />
-                        <Button className="btn-style">Update</Button>
-                      </form>
+          {error && (
+            <div>
+              <Row>
+                <Column lg="12" md="12" sm="12" xs="12">
+                  <TextMessage style={{ transform: 'translateY(100%)' }}>
+                    The link has expired or there was a problem resetting the
+                    password. Please <Link to="/login-signup">request</Link>{' '}
+                    another reset link.
+                  </TextMessage>
+                </Column>
+              </Row>
+            </div>
+          )}
 
-                      {message && (
-                        <div>
-                          <p className="p-resetPassword">{message}</p>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+          {!error && (
+            <div>
+              <Row>
+                <Column lg="12" md="12" sm="12" xs="12">
+                  <TextMessage>
+                    Please fill in the fields below to update password.
+                  </TextMessage>
+                </Column>
+              </Row>
+              <form className="password-form" onSubmit={this.checkMatch}>
+                <Row>
+                  <Column lg="12" md="12" sm="12" xs="12">
+                    <Input
+                      id="new-password"
+                      label="New Password"
+                      placeholder="New password..."
+                      onChange={this.handleChange('newPassword')}
+                      value={newPassword}
+                      type="password"
+                      autoComplete="off"
+                    />
+                  </Column>
+                </Row>
+                <Row>
+                  <Column lg="12" md="12" sm="12" xs="12">
+                    <Input
+                      id="confirm-password"
+                      label="Confirm Password"
+                      placeholder="Confirm password..."
+                      onChange={this.handleChange('confirmPassword')}
+                      value={confirmPassword}
+                      type="password"
+                      autoComplete="off"
+                    />
+                  </Column>
+                </Row>
+                <Row>
+                  <Column lg="12" md="12" sm="12" xs="12">
+                    <Button className="btn-style">Update</Button>
+                  </Column>
+                </Row>
+              </form>
+
+              {message && (
+                <div>
+                  <Row>
+                    <Column lg="12" md="12" sm="12" xs="12">
+                      <TextMessage>{message}</TextMessage>
+                    </Column>
+                  </Row>
                 </div>
               )}
-            </Column>
-          </Row>
+
+              {passwordChanged && (
+                <div>
+                  <Row>
+                    <Column lg="12" md="12" sm="12" xs="12">
+                      <TextMessage>
+                        This window will close in {count} seconds.
+                      </TextMessage>
+                    </Column>
+                  </Row>
+                </div>
+              )}
+            </div>
+          )}
         </Box>
-      </div>
+      </>
     );
   }
 }
