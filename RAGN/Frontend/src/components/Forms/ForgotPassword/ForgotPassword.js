@@ -7,7 +7,8 @@ class ForgotPassword extends React.Component {
   state = {
     isOpen: false,
     email: '',
-    message: ''
+    message: '',
+    color: '#e68a00'
   };
 
   // Method for handling email input
@@ -49,7 +50,8 @@ class ForgotPassword extends React.Component {
       } else if (response.data === 'email sent') {
         this.setState({
           message: 'Link sent. Please check your email to reset password.',
-          email: ''
+          email: '',
+          color: 'black'
         });
         setTimeout(this.handleModal, 4000);
       }
@@ -100,7 +102,9 @@ class ForgotPassword extends React.Component {
               {this.state.message && (
                 <Row>
                   <Column lg="12" md="12" sm="12" xs="12">
-                    <ErrorMessage>{this.state.message}</ErrorMessage>
+                    <ErrorMessage style={{ color: this.state.color }}>
+                      {this.state.message}
+                    </ErrorMessage>
                   </Column>
                 </Row>
               )}

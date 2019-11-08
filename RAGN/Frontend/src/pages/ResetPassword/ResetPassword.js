@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import util from '../../util/forgotpassword';
-import './ResetPassword.css';
 import { Row, Column, Box, Input, Button, Image, TextMessage } from './styled';
 import logo from '../../images/logo2.svg';
 
@@ -12,7 +11,8 @@ class ResetPassword extends Component {
     message: '',
     passwordChanged: false,
     error: false,
-    count: 10
+    count: 10,
+    color: '#e68a00'
   };
 
   //Lifecycle method to check that the the password token is still valid
@@ -48,7 +48,7 @@ class ResetPassword extends Component {
 
   //Lifecycle method that is not initially called, but rather after updating occurs.
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.count < 1) {
+    if (prevState.count === 1) {
       clearInterval(this.tick());
       window.close();
     }
@@ -82,7 +82,8 @@ class ResetPassword extends Component {
             newPassword: '',
             confirmPassword: '',
             message: `Your password has been successfully updated. Please try logging in again.`,
-            passwordChanged: true
+            passwordChanged: true,
+            color: 'black'
           });
           setInterval(() => this.tick(), 1000);
         } else if (response.data.name === 'ValidationError') {
@@ -122,11 +123,12 @@ class ResetPassword extends Component {
       confirmPassword,
       message,
       passwordChanged,
-      count
+      count,
+      color
     } = this.state;
     console.log(count);
     return (
-      <>
+      <div style={{ backgroundColor: '#939393', height: '100vh' }}>
         <Box>
           <Row>
             <Column lg="12" md="12" sm="12" xs="12">
@@ -183,29 +185,35 @@ class ResetPassword extends Component {
                     />
                   </Column>
                 </Row>
-                <Row>
-                  <Column lg="12" md="12" sm="12" xs="12">
-                    <Button className="btn-style">Update</Button>
-                  </Column>
-                </Row>
-              </form>
-
-              {message && (
-                <div>
+                {message ? (
+                  <div>
+                    <Row>
+                      <Column lg="9" md="9" sm="9" xs="9">
+                        <TextMessage style={{ color: color }}>
+                          {message}
+                        </TextMessage>
+                      </Column>
+                      <Column lg="3" md="3" sm="3" xs="3">
+                        <Button>Update</Button>
+                      </Column>
+                    </Row>
+                  </div>
+                ) : (
                   <Row>
                     <Column lg="12" md="12" sm="12" xs="12">
-                      <TextMessage>{message}</TextMessage>
+                      <Button>Update</Button>
                     </Column>
                   </Row>
-                </div>
-              )}
+                )}
+              </form>
 
               {passwordChanged && (
                 <div>
                   <Row>
                     <Column lg="12" md="12" sm="12" xs="12">
                       <TextMessage>
-                        This window will close in {count} seconds.
+                        This window will close in {count}
+                        {count >= 2 ? ' seconds' : ' second'}.
                       </TextMessage>
                     </Column>
                   </Row>
@@ -214,7 +222,7 @@ class ResetPassword extends Component {
             </div>
           )}
         </Box>
-      </>
+      </div>
     );
   }
 }
