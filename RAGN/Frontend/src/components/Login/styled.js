@@ -114,18 +114,18 @@ export const Button = styled.button`
   font-size: 15px;
   padding: 8px 15px;
   background-color: #939393;
-  outline: none;
+  outline-color: #312b7f;
   color: #edeae7;
 
   :hover {
     cursor: pointer;
     background-color: #312b7f;
     color: white;
-    outline: none;
+    outline-color: #312b7f;
   }
 
   :active {
-    outline: none;
+    outline-color: #312b7f;
     border: 0;
   }
 `;
@@ -150,9 +150,11 @@ export const TextSelection = styled.p`
 export const Icon = styled.img`
   width: 30px;
   height: 30px;
+  outline: none;
 
   :hover {
     cursor: pointer;
+    outline: none;
   }
 `;
 

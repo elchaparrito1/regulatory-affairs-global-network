@@ -13,7 +13,7 @@ class SignUpForm extends React.Component {
       <SignUpContext.Consumer>
         {context => (
           <div style={{ border: context.typeColor }}>
-            <form style={{ marginLeft: '65px' }}>
+            <form style={{ marginLeft: '65px' }} aria-label="signupFormInput">
               <Row>
                 <Column lg="12" md="12" sm="12" xs="12">
                   <p
@@ -29,21 +29,22 @@ class SignUpForm extends React.Component {
               </Row>
               <Row>
                 <Column lg="12" md="12" sm="12" xs="12">
-                  <FormLabel>Account type *</FormLabel>
+                  <FormLabel htmlFor="accountTypeInput">
+                    Account type *
+                  </FormLabel>
                 </Column>
               </Row>
               <Row>
                 <Column lg="12" md="12" sm="12" xs="12">
-                  <label>
-                    <input
-                      type="radio"
-                      className="form-radio"
-                      value="customer"
-                      checked={context.signupType === 'customer'}
-                      onChange={context.handleRadioChange}
-                    />
-                    <span> Customer</span>
-                  </label>
+                  <input
+                    type="radio"
+                    className="form-radio"
+                    aria-label="customer-selection"
+                    value="customer"
+                    checked={context.signupType === 'customer'}
+                    onChange={context.handleRadioChange}
+                  />
+                  <span> Customer</span>
                 </Column>
               </Row>
               <Row>
@@ -54,16 +55,15 @@ class SignUpForm extends React.Component {
                   sm="12"
                   xs="12"
                 >
-                  <label>
-                    <input
-                      type="radio"
-                      className="form-radio"
-                      value="consultant"
-                      checked={context.signupType === 'consultant'}
-                      onChange={context.handleRadioChange}
-                    />
-                    <span> Consultant</span>
-                  </label>
+                  <input
+                    type="radio"
+                    className="form-radio"
+                    aria-label="consultant-selection"
+                    value="consultant"
+                    checked={context.signupType === 'consultant'}
+                    onChange={context.handleRadioChange}
+                  />
+                  <span> Consultant</span>
                 </Column>
               </Row>
               {context.signupType === 'customer' && <CustomerForm />}

@@ -67,15 +67,19 @@ export const Box = styled.div`
   }
 `;
 
-export const Close = styled.span`
-  color: #ccc;
-  font-size: 30px;
+export const Remove = styled.button`
+  font-size: 25px;
   color: black;
   cursor: pointer;
   margin-left: 5px;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  outline-color: #312b7f;
 
   :hover,
   focus {
     color: #312b7f;
+    outline-color: #312b7f;
   }
 `;

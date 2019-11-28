@@ -1,6 +1,6 @@
 import React from 'react';
 import SignUpContext from '../../../contexts/SignupContext';
-import { Row, Column, Input, Box, Close, Span, FormLabel } from './styled';
+import { Row, Column, Input, Box, Remove, Span, FormLabel } from './styled';
 
 class QualitifcationsForm extends React.Component {
   render() {
@@ -8,10 +8,11 @@ class QualitifcationsForm extends React.Component {
       <SignUpContext.Consumer>
         {context => (
           <>
-            <FormLabel>Qualifications</FormLabel>
+            <FormLabel htmlFor="qualificationsInput">Qualifications</FormLabel>
             <Input
               id="qualification"
               type="text"
+              aria-label="qualifications-input"
               placeholder="Your qualifications..."
               value={context.qualification}
               autoComplete="off"
@@ -37,8 +38,9 @@ class QualitifcationsForm extends React.Component {
                                   }}
                                 >
                                   <Column lg="1" md="1" sm="1" xs="1">
-                                    <Close
-                                      className="close"
+                                    <Remove
+                                      className="remove"
+                                      aria-label="remove-button"
                                       onClick={() =>
                                         context.handleRemove(
                                           'qualifications',
@@ -48,7 +50,7 @@ class QualitifcationsForm extends React.Component {
                                       }
                                     >
                                       &times;
-                                    </Close>
+                                    </Remove>
                                   </Column>
                                   <Column lg="11" md="11" sm="11" xs="11">
                                     <div

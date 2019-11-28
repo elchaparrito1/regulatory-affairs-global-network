@@ -76,16 +76,22 @@ export const ModalBody = styled.div`
   margin: 0 auto;
 `;
 
-export const Close = styled.span`
-  color: #ccc;
-  float: right;
-  font-size: 35px;
+export const Close = styled.button`
+  font-size: 30px;
   color: black;
   cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: none;
+  background-color: transparent;
+  float: right;
+  line-height: 100%;
+  outline-color: #312b7f;
 
   :hover,
   focus {
     color: #312b7f;
+    outline-color: #312b7f;
   }
 `;
 
@@ -98,17 +104,17 @@ export const Button = styled.button`
   padding: 8px 15px;
   float: right;
   font-family: 'Montserrat', sans-serif;
-  outline: none;
+  outline-color: #312b7f;
 
   :hover {
     cursor: pointer;
     background-color: #312b7f;
     color: white;
-    outline: none;
+    outline-color: #312b7f;
   }
 
   :active {
-    outline: none;
+    outline-color: #312b7f;
     border: 0;
   }
 

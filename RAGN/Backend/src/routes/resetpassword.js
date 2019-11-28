@@ -13,7 +13,6 @@ resetPasswordRouter.get('', async (req, res) => {
     });
     // console.log(user);
     if (user === null) {
-      console.log('password reset link is invalid or has expired');
       res.json('password reset link is invalid or has expired');
     } else {
       res.status(200).send({

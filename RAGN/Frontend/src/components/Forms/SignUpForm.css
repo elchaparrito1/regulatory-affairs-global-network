@@ -15,7 +15,7 @@
   line-height: 25px;
   height: 35px;
   width: 75%;
-  outline: none;
+  outline-color: #312b7f;
   color: #939393;
 }
 
@@ -38,6 +38,14 @@
   font-size: 15px;
   position: relative;
   width: 100%;
+}
+
+.react-tel-input .selected-flag {
+  outline-color: orange;
+}
+
+.react-tel-input .flag-dropdown:focus {
+  border: 1px solid #312b7f;
 }
 
 /* .react-tel-input .country-list {

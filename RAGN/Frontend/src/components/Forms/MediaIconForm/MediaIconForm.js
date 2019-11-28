@@ -2,7 +2,7 @@ import React from 'react';
 import SignUpContext from '../../../contexts/SignupContext';
 import Select from 'react-select';
 import 'react-dropdown/style.css';
-import { Row, Column, Input, Box, Close } from './styled';
+import { Row, Column, Input, Box, Remove } from './styled';
 
 import './Media.css';
 
@@ -32,8 +32,9 @@ class MediaIconForm extends React.Component {
                               <Box>
                                 <Row style={{ padding: '5px 0 5px 5px' }}>
                                   <Column lg="1" md="1" sm="1" xs="1">
-                                    <Close
-                                      className="close"
+                                    <Remove
+                                      className="remove"
+                                      aria-label="remove icon"
                                       onClick={() =>
                                         context.handleRemove(
                                           'media',
@@ -43,7 +44,7 @@ class MediaIconForm extends React.Component {
                                       }
                                     >
                                       &times;
-                                    </Close>
+                                    </Remove>
                                   </Column>
                                   <Column lg="2" md="2" sm="2" xs="2">
                                     <div style={{ float: 'right' }}>
@@ -60,6 +61,7 @@ class MediaIconForm extends React.Component {
                                     <Input
                                       id="iconURL"
                                       type="url"
+                                      aria-label="url-input"
                                       placeholder="Url for this icon..."
                                       value={opt.iconURL}
                                       onChange={context.handleFormChange(index)}

@@ -144,16 +144,17 @@ export const TextMessage = styled.p`
   font-size: 0.8em;
   text-align: left;
   margin-top: ${props => (props.box ? '-10px' : '-30px')};
-  margin-right: 195px;
+  margin-right: 90px;
 `;
 
 export const Icon = styled.img`
   width: ${props => (props.info ? '15px' : '30px')};
   height: ${props => (props.info ? '15px' : '30px')};
-  margin-left: ${props => (props.info ? '-115px' : '-105px')};
-  margin-top: ${props => (props.info ? '2px' : '10px')};
+  outline: none;
+  float: left;
 
   :hover {
     cursor: pointer;
+    outline: none;
   }
 `;

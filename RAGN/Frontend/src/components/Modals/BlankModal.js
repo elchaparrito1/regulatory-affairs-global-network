@@ -11,6 +11,7 @@ import {
   Close,
   Button
 } from './styled';
+import FocusLock from 'react-focus-lock';
 
 class BlankModal extends React.Component {
   render() {
@@ -21,26 +22,39 @@ class BlankModal extends React.Component {
     }
 
     return ReactDOM.createPortal(
-      <Modal>
-        <ModalContent>
-          <ModalHeader>
-            <Close onClick={this.props.handleModal} className="close">
-              &times;
-            </Close>
-            {this.props.header}
-          </ModalHeader>
-          <ModalBody>{this.props.body}</ModalBody>
-          <ModalFooter>
-            <Row>
-              <Column lg="12" md="12" sm="12" xs="12">
-                <Button onClick={this.props.footerMethod}>
-                  {this.props.footer}
-                </Button>
-              </Column>
-            </Row>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>,
+      <FocusLock>
+        <Modal>
+          <ModalContent>
+            <ModalHeader>
+              <Close
+                type="button  "
+                onClick={this.props.handleModal}
+                className="close"
+                aria-label="close"
+              >
+                &times;
+              </Close>
+              {this.props.header}
+            </ModalHeader>
+            <form>
+              <ModalBody>{this.props.body}</ModalBody>
+              <ModalFooter>
+                <Row>
+                  <Column lg="12" md="12" sm="12" xs="12">
+                    <Button
+                      type="submit"
+                      onClick={this.props.footerMethod}
+                      aria-label="submit or send"
+                    >
+                      {this.props.footer}
+                    </Button>
+                  </Column>
+                </Row>
+              </ModalFooter>
+            </form>
+          </ModalContent>
+        </Modal>
+      </FocusLock>,
       document.querySelector('#modal')
     );
   }

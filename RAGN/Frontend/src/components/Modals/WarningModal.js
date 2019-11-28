@@ -27,7 +27,10 @@ class WarningModal extends React.Component {
           <ModalFooter>
             <Row>
               <Column lg="12" md="12" sm="12" xs="12">
-                <Button onClick={this.props.footerMethod}>
+                <Button
+                  onClick={this.props.footerMethod}
+                  aria-label="action-button"
+                >
                   {this.props.footer}
                 </Button>
               </Column>

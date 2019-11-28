@@ -84,7 +84,7 @@ export const Input = styled.input`
       color: #312b7f;
     }
     color: #312b7f;
-    outline: none;
+    outline-color: #312b7f;
     border-bottom: 1px solid #312b7f;
   }
 `;
@@ -93,20 +93,20 @@ export const Button = styled.button`
   font-size: 15px;
   padding: 8px 15px;
   background-color: #939393;
-  outline: none;
   color: #edeae7;
   margin-left: 40px;
   border: 0;
+  outline-color: #312b7f;
 
   :hover {
     cursor: pointer;
     background-color: #312b7f;
     color: white;
-    outline: none;
+    outline-color: #312b7f;
   }
 
   :active {
-    outline: none;
+    outline-color: #312b7f;
     border: 0;
   }
 `;

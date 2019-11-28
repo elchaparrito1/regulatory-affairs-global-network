@@ -124,13 +124,17 @@ export const Button = styled.button`
   }
 `;
 
-export const P = styled.p`
+export const Link = styled.button`
   font-size: 0.9em;
   float: right;
-  margin-top: 10px;
+  margin-top: -25px;
+  background-color: transparent;
+  border: none;
+  outline-color: #312b7f;
 
   :hover {
     cursor: pointer;
     color: #312b7f;
+    outline-color: #312b7f;
   }
 `;

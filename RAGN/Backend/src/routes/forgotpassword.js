@@ -19,7 +19,7 @@ forgotPasswordRouter.post('', async (req, res) => {
       {
         $set: {
           resetPasswordToken: token,
-          resetPasswordExpires: Date.now() + 180000
+          resetPasswordExpires: Date.now() + 600000
         }
       },
       { useFindAndModify: false }

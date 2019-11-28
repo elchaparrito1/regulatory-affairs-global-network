@@ -177,11 +177,16 @@ class MyFormContext extends React.Component {
   handleCountryChange = regions => this.setState({ regions });
 
   // Method specific for updating qualifications entry
-  handleQualChange = () =>
+  handleQualChange = e => {
+    e.preventDefault();
+    if (this.state.qualification === '') {
+      return false;
+    }
     this.setState({
       qualifications: [...this.state.qualifications, this.state.qualification],
       qualification: ''
     });
+  };
 
   // Method for deleting objects from media and qualifications array
   handleRemove = (name, src, ind) => {
@@ -242,6 +247,12 @@ class MyFormContext extends React.Component {
         });
   };
 
+  keydown = event => {
+    if (event.key === 'Enter') {
+      this.handleClassChange(event);
+    }
+  };
+
   handlePhoneChange = value => {
     this.setState({ phone: value });
   };
@@ -286,6 +297,7 @@ class MyFormContext extends React.Component {
           handleFormChange: this.handleFormChange,
           handleRemove: this.handleRemove,
           handleQualChange: this.handleQualChange,
+          keydown: this.keydown,
           mediaOptions: mediaOptions
         }}
       >

@@ -23,11 +23,17 @@ const Signup = () => {
             <Box>
               <Row>
                 <Column lg="6" md="6" sm="6" xs="6">
-                  <Label>New User?</Label>
+                  <Label htmlFor="newUserSelection">New User?</Label>
                 </Column>
                 {/* <Column lg="2" md="2" sm="2" xs="2" /> */}
                 <Column lg="6" md="6" sm="6" xs="6">
-                  <Button onClick={context.handleModal}>Register</Button>
+                  <Button
+                    type="button"
+                    onClick={context.handleModal}
+                    aria-label="new-user-selection"
+                  >
+                    Register
+                  </Button>
                 </Column>
               </Row>
             </Box>

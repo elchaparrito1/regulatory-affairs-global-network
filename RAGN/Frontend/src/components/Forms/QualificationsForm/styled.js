@@ -71,37 +71,42 @@ export const Box = styled.div`
   }
 `;
 
-export const Close = styled.span`
+export const Remove = styled.button`
   color: #ccc;
-  font-size: 30px;
+  font-size: 20px;
   color: black;
   cursor: pointer;
   margin-left: 5px;
+  margin-right: 5px;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  outline-color: #312b7f;
 
   :hover,
   focus {
     color: #312b7f;
+    outline-color: #312b7f;
   }
 `;
 
-export const Span = styled.span`
+export const Span = styled.button`
   font-size: 35px;
   background-color: transparent;
-  outline: none;
+  outline-color: #312b7f;
   color: #939393;
   border: 0;
-  height: 50%;
 
   :hover {
     cursor: pointer;
     background-color: transparent;
     border: 0;
     color: #312b7f;
-    outline: none;
+    outline-color: #312b7f;
   }
 
   :active {
-    outline: none;
+    outline-color: #312b7f;
     border: 0;
   }
 `;

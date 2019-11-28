@@ -1,6 +1,6 @@
 import React from 'react';
 import BlankModal from '../../Modals/BlankModal';
-import { Row, Column, Input, TextMessage, P, ErrorMessage } from './styled';
+import { Row, Column, Input, TextMessage, Link, ErrorMessage } from './styled';
 import util from '../../../util/forgotpassword';
 
 class ForgotPassword extends React.Component {
@@ -21,6 +21,7 @@ class ForgotPassword extends React.Component {
 
   // Method for opening modal
   handleModal = () => {
+    console.log('Did it go to this?');
     if (!this.state.isOpen) {
       this.setState({
         isOpen: true
@@ -31,6 +32,12 @@ class ForgotPassword extends React.Component {
         email: '',
         message: ''
       });
+    }
+  };
+
+  handleKeyPress = event => {
+    if (event.key === 'Enter') {
+      this.handleModal(event);
     }
   };
 
@@ -59,11 +66,14 @@ class ForgotPassword extends React.Component {
   };
 
   render() {
+    console.log(this.state.isOpen);
     return (
       <>
         <BlankModal
           isOpen={this.state.isOpen}
           handleModal={this.handleModal}
+          role="dialog"
+          ariaModal="true"
           header={<h1>Reset Password</h1>}
           body={
             <>
@@ -92,6 +102,7 @@ class ForgotPassword extends React.Component {
                 >
                   <Input
                     type="email"
+                    aria-label="email-input"
                     placeholder="Your email..."
                     value={this.state.email}
                     autoComplete="off"
@@ -113,9 +124,9 @@ class ForgotPassword extends React.Component {
           footerMethod={this.handleSubmit}
           footer="Send Link"
         />
-        <div onClick={this.handleModal}>
-          <P>Forgot password?</P>
-        </div>
+        <Link aria-label="forgot password" onClick={this.handleModal}>
+          Forgot password?
+        </Link>
       </>
     );
   }

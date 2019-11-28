@@ -11,7 +11,8 @@ import {
   Box,
   TextMessage,
   LoginMessage,
-  Icon
+  Icon,
+  Button
 } from './styled';
 import ShowImg from '../../images/show.png';
 import HideImg from '../../images/hide.png';
@@ -124,7 +125,6 @@ class Login extends React.Component {
   };
 
   render() {
-    // console.log(this.state.errors);
     return (
       <>
         <Row>
@@ -140,46 +140,54 @@ class Login extends React.Component {
                   <LoginMessage>{this.state.errors}</LoginMessage>
                 </Column>
               </Row>
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={this.handleSubmit} aria-label="loginInput">
                 <Row>
                   <Column lg="12" md="12" sm="12" xs="12">
                     <Label>Login type *</Label>
                   </Column>
                 </Row>
-                <Row>
-                  <Column lg="12" md="12" sm="12" xs="12">
-                    <label>
+                <div role="radiogroup">
+                  <Row>
+                    <Column lg="12" md="12" sm="12" xs="12">
                       <input
                         type="radio"
                         className="form-radio"
                         value="customer"
                         checked={this.state.userType === 'customer'}
                         onChange={this.handleChange}
+                        aria-labelledby="customer"
                       />
-                      <span> Customer</span>
-                    </label>
-                  </Column>
-                </Row>
-                <Row>
-                  <Column
-                    style={{ marginBottom: '15px' }}
-                    lg="12"
-                    md="12"
-                    sm="12"
-                    xs="12"
-                  >
-                    <label>
+                      <label id="customer" htmlFor="customer-selection">
+                        {' '}
+                        Customer
+                      </label>
+                    </Column>
+                  </Row>
+                </div>
+                <div role="radiogroup">
+                  <Row>
+                    <Column
+                      style={{ marginBottom: '15px' }}
+                      lg="12"
+                      md="12"
+                      sm="12"
+                      xs="12"
+                    >
                       <input
                         type="radio"
                         className="form-radio"
                         value="consultant"
                         checked={this.state.userType === 'consultant'}
                         onChange={this.handleChange}
+                        aria-labelledby="consultant"
                       />
-                      <span> Consultant</span>
-                    </label>
-                  </Column>
-                </Row>
+                      <label id="consultant" htmlFor="consultant-selection">
+                        {' '}
+                        Consultant
+                      </label>
+                    </Column>
+                  </Row>
+                </div>
                 {this.state.typeError === 'blank' && (
                   <Row>
                     <Column lg="12" md="12" sm="12" xs="12">
@@ -189,7 +197,7 @@ class Login extends React.Component {
                 )}
                 <Row>
                   <Column lg="12" md="12" sm="12" xs="12">
-                    <Label>Email *</Label>
+                    <Label htmlFor="emailInput">Email *</Label>
                   </Column>
                 </Row>
                 <Row>
@@ -198,6 +206,7 @@ class Login extends React.Component {
                       style={{ borderColor: this.state.emailColor }}
                       id="email"
                       type="text"
+                      aria-label="email-input"
                       placeholder="Your email..."
                       value={this.state.email}
                       autoComplete="off"
@@ -215,7 +224,7 @@ class Login extends React.Component {
                 )}
                 <Row>
                   <Column lg="12" md="12" sm="12" xs="12">
-                    <Label>Password *</Label>
+                    <Label htmlFor="passwordInput">Password *</Label>
                   </Column>
                 </Row>
                 <Row>
@@ -223,6 +232,7 @@ class Login extends React.Component {
                     <Input
                       style={{ borderColor: this.state.passwordColor }}
                       id="password"
+                      aria-label="email-input"
                       type={this.state.showPassword ? 'text' : 'password'}
                       placeholder="Your password..."
                       value={this.state.password}
@@ -232,13 +242,21 @@ class Login extends React.Component {
                     />
                   </Column>
                   <Column lg="1" md="1" sm="1" xs="1">
-                    <span>
+                    <button
+                      type="button"
+                      style={{
+                        backgroundColor: 'transparent',
+                        border: 'none',
+                        outlineColor: '#312b7f'
+                      }}
+                      aria-label="show or hide password"
+                      onClick={this.handleToggle}
+                    >
                       <Icon
-                        onClick={this.handleToggle}
                         src={this.state.showPassword ? ShowImg : HideImg}
-                        alt="password icon"
+                        alt=" show/hide password icon"
                       />
-                    </span>
+                    </button>
                   </Column>
                 </Row>
                 {this.state.passwordError === 'blank' && (
@@ -250,17 +268,17 @@ class Login extends React.Component {
                 )}
                 <Row style={{ marginRight: '30px' }}>
                   <Column lg="6" md="6" sm="6" xs="6">
-                    <input
-                      className="input-style"
-                      type="submit"
-                      value="Login"
-                    />
-                  </Column>
-                  <Column lg="6" md="6" sm="6" xs="6">
-                    <ForgotPassword />
+                    <Button aria-label="login" type="submit">
+                      Login
+                    </Button>
                   </Column>
                 </Row>
               </form>
+              <Row>
+                <Column lg="12" md="12" sm="12" xs="12">
+                  <ForgotPassword />
+                </Column>
+              </Row>
             </Box>
           </Column>
         </Row>

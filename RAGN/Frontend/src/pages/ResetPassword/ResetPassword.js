@@ -31,7 +31,6 @@ class ResetPassword extends Component {
             update: false,
             isLoading: false,
             error: false
-            // name: ""
           });
         } else {
           this.setState({
@@ -158,12 +157,17 @@ class ResetPassword extends Component {
                   </TextMessage>
                 </Column>
               </Row>
-              <form className="password-form" onSubmit={this.checkMatch}>
+              <form
+                className="password-form"
+                onSubmit={this.checkMatch}
+                aria-label="reset-password"
+              >
                 <Row>
                   <Column lg="12" md="12" sm="12" xs="12">
                     <Input
                       id="new-password"
                       label="New Password"
+                      aria-label="reset-input"
                       placeholder="New password..."
                       onChange={this.handleChange('newPassword')}
                       value={newPassword}
@@ -177,6 +181,7 @@ class ResetPassword extends Component {
                     <Input
                       id="confirm-password"
                       label="Confirm Password"
+                      aria-label="reset-input"
                       placeholder="Confirm password..."
                       onChange={this.handleChange('confirmPassword')}
                       value={confirmPassword}
@@ -194,14 +199,16 @@ class ResetPassword extends Component {
                         </TextMessage>
                       </Column>
                       <Column lg="3" md="3" sm="3" xs="3">
-                        <Button>Update</Button>
+                        <Button aria-label="reset-password-button">
+                          Update
+                        </Button>
                       </Column>
                     </Row>
                   </div>
                 ) : (
                   <Row>
                     <Column lg="12" md="12" sm="12" xs="12">
-                      <Button>Update</Button>
+                      <Button aria-label="reset-password-button">Update</Button>
                     </Column>
                   </Row>
                 )}
