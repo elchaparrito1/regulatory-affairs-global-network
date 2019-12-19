@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
     "axios": "^0.19.0",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
-    "react": "^16.8.5",
-    "react-dom": "^16.8.5",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-dropdown": "^1.6.4",
     "react-focus-lock": "^2.2.1",
     "react-phone-input-2": "^2.10.0",
@@ -19,8 +21,10 @@
     "react-select": "^3.0.4",
     "react-share": "^3.0.1",
     "react-social-icons": "^4.1.0",
+    "react-test-renderer": "^16.12.0",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
+    "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.3.0",
     "shortid": "^2.2.15",
     "styled-components": "^4.3.2",
@@ -41,5 +45,8 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000",
+  "devDependencies": {
+    "webpack-bundle-analyzer": "^3.6.0"
+  }
 }

@@ -7,9 +7,11 @@ const composeEnhancers = composeWithDevTools({
   // Specify custom devTools options
 });
 
-export default preloadedState =>
+const store = preloadedState =>
   createStore(
     reducer,
     preloadedState,
     composeEnhancers(applyMiddleware(thunk))
   );
+
+export default store;

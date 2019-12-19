@@ -70,7 +70,6 @@ class Navigation extends React.Component {
   };
 
   render() {
-    console.log(window.location.pathname);
     return (
       <div>
         {window.location.pathname === '/login-signup' ? (

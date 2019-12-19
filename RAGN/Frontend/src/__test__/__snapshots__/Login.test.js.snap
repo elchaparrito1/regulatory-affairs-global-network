@@ -1,0 +1,252 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Connected React-Redux Component to test login allows user to login successfully 1`] = `
+<div
+  className="sc-chPdSV jkEqUC"
+>
+  <div
+    className="sc-kgoBCf hdLEOP"
+  >
+    <div
+      className="sc-kGXeez dPIuWb"
+    >
+      <div
+        className="sc-chPdSV jkEqUC"
+      >
+        <div
+          className="sc-kgoBCf hdLEOP"
+        >
+          <p
+            className="sc-kpOJdX fJKtvF"
+          >
+            Log in to RAGN
+          </p>
+        </div>
+      </div>
+      <div
+        className="sc-chPdSV jkEqUC"
+      >
+        <div
+          className="sc-kgoBCf hdLEOP"
+        >
+          <p
+            className="sc-dxgOiQ sc-ckVGcZ imVjdu"
+          />
+        </div>
+      </div>
+      <form
+        aria-label="loginInput"
+        onSubmit={[Function]}
+      >
+        <div
+          className="sc-chPdSV jkEqUC"
+        >
+          <div
+            className="sc-kgoBCf hdLEOP"
+          >
+            <label
+              className="sc-eNQAEJ hoEBqV"
+            >
+              Login type *
+            </label>
+          </div>
+        </div>
+        <div
+          role="radiogroup"
+        >
+          <div
+            className="sc-chPdSV jkEqUC"
+          >
+            <div
+              className="sc-kgoBCf hdLEOP"
+            >
+              <input
+                aria-labelledby="customer"
+                checked={true}
+                className="form-radio"
+                onChange={[Function]}
+                type="radio"
+                value="customer"
+              />
+              <label
+                htmlFor="customer-selection"
+                id="customer"
+              >
+                 
+                Customer
+              </label>
+            </div>
+          </div>
+        </div>
+        <div
+          role="radiogroup"
+        >
+          <div
+            className="sc-chPdSV jkEqUC"
+          >
+            <div
+              className="sc-kgoBCf hdLEOP"
+              style={
+                Object {
+                  "marginBottom": "15px",
+                }
+              }
+            >
+              <input
+                aria-labelledby="consultant"
+                checked={false}
+                className="form-radio"
+                onChange={[Function]}
+                type="radio"
+                value="consultant"
+              />
+              <label
+                htmlFor="consultant-selection"
+                id="consultant"
+              >
+                 
+                Consultant
+              </label>
+            </div>
+          </div>
+        </div>
+        <div
+          className="sc-chPdSV jkEqUC"
+        >
+          <div
+            className="sc-kgoBCf hdLEOP"
+          >
+            <label
+              className="sc-eNQAEJ hoEBqV"
+              htmlFor="emailInput"
+            >
+              Email *
+            </label>
+          </div>
+        </div>
+        <div
+          className="sc-chPdSV jkEqUC"
+        >
+          <div
+            className="sc-kgoBCf hdLEOP"
+          >
+            <input
+              aria-label="email-input"
+              autoComplete="off"
+              className="sc-jKJlTe wjiUD"
+              id="email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="Your email..."
+              style={
+                Object {
+                  "borderColor": "",
+                }
+              }
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          className="sc-chPdSV jkEqUC"
+        >
+          <div
+            className="sc-kgoBCf hdLEOP"
+          >
+            <label
+              className="sc-eNQAEJ hoEBqV"
+              htmlFor="passwordInput"
+            >
+              Password *
+            </label>
+          </div>
+        </div>
+        <div
+          className="sc-chPdSV jkEqUC"
+        >
+          <div
+            className="sc-kgoBCf cAYzjp"
+          >
+            <input
+              aria-label="password-input"
+              autoComplete="off"
+              className="sc-jKJlTe wjiUD"
+              id="password"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="Your password..."
+              style={
+                Object {
+                  "borderColor": "",
+                }
+              }
+              type="password"
+              value=""
+            />
+          </div>
+          <div
+            className="sc-kgoBCf jycTd"
+          >
+            <button
+              aria-label="show or hide password"
+              id="password-btn"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "border": "none",
+                  "outlineColor": "#312b7f",
+                }
+              }
+              type="button"
+            >
+              <img
+                alt=" show/hide password icon"
+                className="sc-kkGfuU hMhJXp"
+                src="hide.png"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          className="sc-chPdSV jkEqUC"
+          style={
+            Object {
+              "marginRight": "30px",
+            }
+          }
+        >
+          <div
+            className="sc-kgoBCf HaxPP"
+          >
+            <button
+              aria-label="login"
+              className="sc-hMqMXs oGbea"
+              data-testid="login-button"
+              type="submit"
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </form>
+      <div
+        className="sc-chPdSV jkEqUC"
+      >
+        <div
+          className="sc-kgoBCf hdLEOP"
+        >
+          <button
+            aria-label="forgot password"
+            className="sc-kAzzGY kjeGsl"
+            onClick={[Function]}
+          >
+            Forgot password?
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -45,6 +45,14 @@ html {
   outline-color: #312b7f;
 }
 
+.error {
+  border-color: red;
+}
+
+.no-error {
+  border-color: none;
+}
+
 /* .form-radio:checked {
   background-color: #312b7f;
 } */

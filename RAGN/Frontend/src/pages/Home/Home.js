@@ -9,9 +9,8 @@ class Home extends React.Component {
     return (
       <div className="bg-image">
         <Navigation />
-        <Link to="/login">Login</Link>
-        <br />
-        <Link to="/signup">Signup</Link>
+
+        <Link to="/login-signup">Login</Link>
         <br />
       </div>
     );

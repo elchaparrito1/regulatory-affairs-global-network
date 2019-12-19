@@ -36,22 +36,22 @@ class BlankModal extends React.Component {
               </Close>
               {this.props.header}
             </ModalHeader>
-            <form>
-              <ModalBody>{this.props.body}</ModalBody>
-              <ModalFooter>
-                <Row>
-                  <Column lg="12" md="12" sm="12" xs="12">
-                    <Button
-                      type="submit"
-                      onClick={this.props.footerMethod}
-                      aria-label="submit or send"
-                    >
-                      {this.props.footer}
-                    </Button>
-                  </Column>
-                </Row>
-              </ModalFooter>
-            </form>
+            {/* <form> */}
+            <ModalBody>{this.props.body}</ModalBody>
+            <ModalFooter>
+              <Row>
+                <Column lg="12" md="12" sm="12" xs="12">
+                  <Button
+                    type="submit"
+                    onClick={this.props.footerMethod}
+                    aria-label="submit or send"
+                  >
+                    {this.props.footer}
+                  </Button>
+                </Column>
+              </Row>
+            </ModalFooter>
+            {/* </form> */}
           </ModalContent>
         </Modal>
       </FocusLock>,

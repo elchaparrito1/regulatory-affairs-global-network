@@ -21,7 +21,6 @@ class ForgotPassword extends React.Component {
 
   // Method for opening modal
   handleModal = () => {
-    console.log('Did it go to this?');
     if (!this.state.isOpen) {
       this.setState({
         isOpen: true
@@ -66,7 +65,6 @@ class ForgotPassword extends React.Component {
   };
 
   render() {
-    console.log(this.state.isOpen);
     return (
       <>
         <BlankModal

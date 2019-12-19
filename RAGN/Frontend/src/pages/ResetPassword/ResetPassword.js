@@ -47,7 +47,7 @@ class ResetPassword extends Component {
 
   //Lifecycle method that is not initially called, but rather after updating occurs.
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.count === 1) {
+    if (prevState.count <= 1) {
       clearInterval(this.tick());
       window.close();
     }
@@ -167,7 +167,7 @@ class ResetPassword extends Component {
                     <Input
                       id="new-password"
                       label="New Password"
-                      aria-label="reset-input"
+                      aria-label="New password input"
                       placeholder="New password..."
                       onChange={this.handleChange('newPassword')}
                       value={newPassword}
@@ -181,7 +181,7 @@ class ResetPassword extends Component {
                     <Input
                       id="confirm-password"
                       label="Confirm Password"
-                      aria-label="reset-input"
+                      aria-label="Confirm new password input"
                       placeholder="Confirm password..."
                       onChange={this.handleChange('confirmPassword')}
                       value={confirmPassword}
@@ -199,7 +199,11 @@ class ResetPassword extends Component {
                         </TextMessage>
                       </Column>
                       <Column lg="3" md="3" sm="3" xs="3">
-                        <Button aria-label="reset-password-button">
+                        <Button
+                          data-testid="button"
+                          type="submit"
+                          aria-label="reset-password"
+                        >
                           Update
                         </Button>
                       </Column>
@@ -208,7 +212,13 @@ class ResetPassword extends Component {
                 ) : (
                   <Row>
                     <Column lg="12" md="12" sm="12" xs="12">
-                      <Button aria-label="reset-password-button">Update</Button>
+                      <Button
+                        data-testid="button"
+                        type="submit"
+                        aria-label="reset-password"
+                      >
+                        Update
+                      </Button>
                     </Column>
                   </Row>
                 )}
@@ -235,3 +245,66 @@ class ResetPassword extends Component {
 }
 
 export default ResetPassword;
+
+// import React from 'react';
+// import { render, fireEvent, getByLabelText } from '@testing-library/react';
+// import '@testing-library/jest-dom/extend-expect';
+// import Login from '../components/Login/Login';
+// import { Provider } from 'react-redux';
+// import configureStore from 'redux-mock-store';
+
+// const mockStore = configureStore([]);
+
+// describe('Connected React-Redux Component to test login', () => {
+//   let store;
+//   let component;
+
+//   beforeEach(() => {
+//     store = mockStore({
+//       user: { userType: '', email: '', password: '' },
+//       message: ''
+//     });
+
+//     component = render(
+//       <Provider store={store}>
+//         <Login />
+//       </Provider>
+//     );
+//   });
+
+//   it('allows user to login successfully', () => {
+//     const userType = getByLabelText(/customer/i);
+//     const email = getByLabelText(/email-input/i);
+//     const password = getByLabelText(/password-input/i);
+//     const loginBtn = getByLabelText(/show or hide password/i);
+
+//     fireEvent.change(email, { target: { value: 'test@gmail.com' } });
+//     fireEvent.change(password, { target: { value: 'Test123#' } });
+//   });
+// });
+
+// import React from 'react';
+// import { render, fireEvent } from '@testing-library/react';
+// import '@testing-library/jest-dom/extend-expect';
+// import Login from '../components/Login/Login';
+// import { Provider } from 'react-redux';
+// import configureStore from '../store/store';
+
+// describe('test cases for login', () => {
+//   test('allows user to login successfully', () => {
+//     const store = configureStore();
+//     const { getByLabelText } = render(
+//       <Provider store={store}>
+//         <Login />
+//       </Provider>
+//     );
+
+//     const userType = getByLabelText(/customer/i);
+//     const email = getByLabelText(/email-input/i);
+//     const password = getByLabelText(/password-input/i);
+//     const loginBtn = getByLabelText(/show or hide password/i);
+
+//     fireEvent.change(email, { target: { value: 'test@gmail.com' } });
+//     fireEvent.change(password, { target: { value: 'Test123#' } });
+//   });
+// });

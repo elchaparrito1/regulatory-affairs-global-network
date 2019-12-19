@@ -98,7 +98,7 @@ export const Button = styled.button`
   font-size: 15px;
   padding: 8px 15px;
   background-color: #939393;
-  outline: none;
+  outline-color: #312b7f;
   color: #edeae7;
   float: right;
 
@@ -106,11 +106,11 @@ export const Button = styled.button`
     cursor: pointer;
     background-color: #312b7f;
     color: white;
-    outline: none;
+    outline-color: #312b7f;
   }
 
   :active {
-    outline: none;
+    outline-color: #312b7f;
     border: 0;
   }
 `;
